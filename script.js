@@ -3,14 +3,26 @@ let circleX = 200
 let circleY = 200
 let left, right, up, down;
 let img;
+let song;
+
+
+function preload(){
+song = loadSound('Sounds/game_start.wav');
+}
 
 function setup() {
 createCanvas(600, 400);
-img = loadImage('pacman_PNG87.png');
+img = loadImage('Images/pacman_PNG87.png');
+
+ 
+if (!song.isPlaying()) {
+    song.play(); 
+    song.loop();
+  }
 }
 
 function draw() {
-  print(state);
+ print(state);
   background('black');
   rectMode(CENTER);
   fill('yellow');
@@ -58,6 +70,7 @@ function mouseClicked() {
   if (state == 1) {
     if (mouseX <= 300 && mouseX >= 100 && mouseY <= 160 && mouseY >= 85) {
       state = 2
+      
     }
   }
   if (state == 1) {
