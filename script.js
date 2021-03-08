@@ -4,7 +4,7 @@ let circleY = 200
 let left, right, up, down;
 
 function setup() {
-  createCanvas(600, 800);
+  createCanvas(600, 400);
 }
 
 function draw() {
@@ -12,13 +12,13 @@ function draw() {
   background('yellow');
   rectMode(CENTER);
   fill('blue');
-  rect(300, 550, 200, 75, 20);
+  rect(150, 120, 200, 75, 20);
   fill('blue');
-  rect(300, 700, 200, 75, 20);
+  rect(150, 270, 200, 75, 20);
   textSize(50);
   fill(0);
-  text('START', 220, 570);
-  text('EXIT', 247, 720);
+  text('START', 75, 135);
+  text('EXIT', 100, 285);
 
   left = false
   right = false
