@@ -2,23 +2,26 @@ let state = 1
 let circleX = 200
 let circleY = 200
 let left, right, up, down;
+let img;
 
 function setup() {
-  createCanvas(600, 400);
+createCanvas(600, 400);
+img = loadImage('pacman_PNG87.png');
 }
 
 function draw() {
   print(state);
-  background('yellow');
+  background('blue');
   rectMode(CENTER);
-  fill('blue');
+  fill('yellow');
   rect(150, 120, 200, 75, 20);
-  fill('blue');
+  fill('yellow');
   rect(150, 270, 200, 75, 20);
   textSize(50);
   fill(0);
   text('START', 75, 135);
   text('EXIT', 100, 285);
+  image(img, 300, 80, 250, 250)
 
   left = false
   right = false
