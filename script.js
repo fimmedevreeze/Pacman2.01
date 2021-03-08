@@ -9,11 +9,11 @@ function setup() {
 
 function draw() {
   print(state);
-  background('yellow');
+  background('black');
   rectMode(CENTER);
-  fill('blue');
+  fill('yellow');
   rect(150, 120, 200, 75, 20);
-  fill('blue');
+  fill('yellow');
   rect(150, 270, 200, 75, 20);
   textSize(50);
   fill(0);
