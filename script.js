@@ -1,59 +1,107 @@
+let state = 1
+let circleX = 200
+let circleY = 200
+let left, right, up, down;
+
 function setup() {
-	createCanvas(500, 400);
+  createCanvas(600, 800);
 }
 
-var [xpos, ypos, xspeed, yspeed] = [225, 225, 0, 0];
-
 function draw() {
-	background(225);
-	
-	fill(0);
-	text("Use the arrow keys (or WASD) to move the square around", 25, 25);
-	
-	fill(0, 255, 0);
-	rect(xpos, ypos, 50, 50);
-	
-	if(xpos >= 0 && xpos + 50 <= 500) xpos += xspeed;
-	if(ypos >= 0 && ypos + 50 <= 500) ypos += yspeed;
+  print(state);
+  background('yellow');
+  rectMode(CENTER);
+  fill('blue');
+  rect(300, 550, 200, 75, 20);
+  fill('blue');
+  rect(300, 700, 200, 75, 20);
+  textSize(50);
+  fill(0);
+  text('START', 220, 570);
+  text('EXIT', 247, 720);
+
+  left = false
+  right = false
+  up = false
+  down = false
+
+  if (state == 2 && circleX > 25 && circleY > 25) {
+  if (left == true) 
+    circleX--
+  if (right == true)
+    circleX++
+  if(up == true)
+    circleY-=1
+  if (down == true)
+    circleY++
+  }
+  
+  if (state == 2) {
+    background(0, 0, 255);
+    circle(circleX, circleY, 50)
+    loop()
+    if (mouseButton == RIGHT) {
+      state = 1
+    }
+  }
+  if (state == 3) {
+    background(0)
+    fill(255, 0, 0)
+    text('BYE THEN OK', 30, 200)
+  }
+}
+
+function mouseClicked() {
+  if (state == 1) {
+    if (mouseX <= 300 && mouseX >= 100 && mouseY <= 160 && mouseY >= 85) {
+      state = 2
+    }
+  }
+  if (state == 1) {
+    if (mouseX <= 300 && mouseX >= 100 && mouseY <= 310 && mouseY >= 235) {
+      state = 3
+      noLoop()
+    }
+  }
 }
 
 function keyPressed() {
-	switch(keyCode) {
-		case 37:
-		case 65:
-			xspeed = -2;
-			break;
-		case 39:
-		case 68:
-			xspeed = 2;
-			break;
-		case 38:
-		case 87:
-			yspeed = -2;
-			break;
-		case 40:
-		case 83:
-			yspeed = 2;
-			break;
-	}
+  if (state == 2) {
+    if (keyCode === LEFT_ARROW) {
+      left = true
+      circleX--
+    }
+    if (keyCode === RIGHT_ARROW) {
+      right = true
+      circleX++
+    }
+    if (keyCode === UP_ARROW) {
+      up = true
+      circleY--
+    }
+    if (keyCode === DOWN_ARROW) {
+      down = true
+      circleY++
+    }
+  }
 }
 
 function keyReleased() {
-	switch(keyCode) {
-		case 37:
-		case 65:
-			xspeed = 0;
-			break;
-		case 39:
-		case 68:
-			xspeed = 0;
-			break;
-		case 38:
-		case 87:
-			yspeed = 0;
-			break;
-		case 40:
-		case 83:
-			yspeed = 0;
-			break;
-	}
+    if (state == 2) {
+    if (keyCode === LEFT_ARROW) {
+      left = false
+    }
+    if (keyCode === RIGHT_ARROW) {
+      right = false
+      circleX++
+    }
+    if (keyCode === UP_ARROW) {
+      up = false
+      circleY--
+    }
+    if (keyCode === DOWN_ARROW) {
+      down = false
+      circleY++
+    }
+  }
+}
