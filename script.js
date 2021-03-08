@@ -11,7 +11,7 @@ img = loadImage('pacman_PNG87.png');
 
 function draw() {
   print(state);
-  background('blue');
+  background('black');
   rectMode(CENTER);
   fill('yellow');
   rect(150, 120, 200, 75, 20);
