@@ -8,6 +8,7 @@ let song;
 
 function preload(){
 songstart = loadSound('Sounds/game_start.wav');
+soundbye = loadSound('Sounds/byebye.wav');
 }
 
 function setup() {
@@ -51,19 +52,21 @@ function draw() {
     rect(150, 320, 200, 75, 20);
     fill('black')
     text('level 3', 75, 337)
-  }
-
+    if (mouseButton == RIGHT) {
+      state = 1
+    }
     if (!songstart.isPlaying()) {
     songstart.play(); 
     songstart.loop();
      }
+  }
   
-
   if (state == 3) {
     background(0)
     fill(255, 0, 0)
     text('SEE YOU NEXT TIME!', 30, 200)
     songstart.stop();
+    soundbye.play();
   }
 
   if (state == 4) {
