@@ -51,20 +51,24 @@ function draw() {
     rect(150, 320, 200, 75, 20);
     fill('black')
     text('level 3', 75, 337)
-    if (mouseButton == RIGHT) {
-      state = 1
-    }
+  }
+
     if (!songstart.isPlaying()) {
     songstart.play(); 
     songstart.loop();
      }
-    }
   
 
   if (state == 3) {
     background(0)
     fill(255, 0, 0)
     text('SEE YOU NEXT TIME!', 30, 200)
+    songstart.stop();
+  }
+
+  if (state == 4) {
+    background(0)
+    fill(255, 0, 0)
     songstart.stop();
   }
 }
@@ -76,53 +80,17 @@ function mouseClicked() {
       
       
     }
-  }
-  if (state == 1) {
-    if (mouseX <= 300 && mouseX >= 100 && mouseY <= 310 && mouseY >= 235) {
+
+     if (mouseX <= 300 && mouseX >= 100 && mouseY <= 310 && mouseY >= 235) {
       state = 3
       noLoop()
       
     }
   }
-}
-
-function keyPressed() {
-  if (state == 2) {
-    if (keyCode === LEFT_ARROW) {
-      left = true
-      circleX--
+  else if (state == 2) {
+    if (mouseX <= 200 && mouseX >= 100 && mouseY <= 170 && mouseY >= 70) {
+      state = 4
+      noLoop()
     }
-    if (keyCode === RIGHT_ARROW) {
-      right = true
-      circleX++
-    }
-    if (keyCode === UP_ARROW) {
-      up = true
-      circleY--
-    }
-    if (keyCode === DOWN_ARROW) {
-      down = true
-      circleY++
-    }
-  }
-}
-
-function keyReleased() {
-    if (state == 2) {
-    if (keyCode === LEFT_ARROW) {
-      left = false
-    }
-    if (keyCode === RIGHT_ARROW) {
-      right = false
-      circleX++
-    }
-    if (keyCode === UP_ARROW) {
-      up = false
-      circleY--
-    }
-    if (keyCode === DOWN_ARROW) {
-      down = false
-      circleY++
-    }
-  }
+  } 
 }
