@@ -7,19 +7,19 @@ let song;
 
 
 function preload(){
-song = loadSound('Sounds/game_start.wav');
+song1 = loadSound('Sounds/game_start.wav');
 }
 
 function setup() {
 createCanvas(600, 400);
 img = loadImage('Images/pacman_PNG87.png');
+ if (!song1.isPlaying()) {
+    song1.play(); 
+    song1.loop();
+     }
 
- 
-if (!song.isPlaying()) {
-    song.play(); 
-    song.loop();
-  }
 }
+ 
 
 function draw() {
  print(state);
@@ -34,6 +34,9 @@ function draw() {
   text('START', 75, 135);
   text('EXIT', 100, 285);
   image(img, 300, 80, 250, 250)
+
+ 
+    
 
   left = false
   right = false
@@ -50,6 +53,8 @@ function draw() {
   if (down == true)
     circleY++
   }
+
+ 
   
   if (state == 2) {
     background(0, 0, 255);
@@ -70,6 +75,7 @@ function mouseClicked() {
   if (state == 1) {
     if (mouseX <= 300 && mouseX >= 100 && mouseY <= 160 && mouseY >= 85) {
       state = 2
+      song1.stop()
       
     }
   }
@@ -77,6 +83,8 @@ function mouseClicked() {
     if (mouseX <= 300 && mouseX >= 100 && mouseY <= 310 && mouseY >= 235) {
       state = 3
       noLoop()
+      song1.stop()
+
     }
   }
 }
