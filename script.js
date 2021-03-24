@@ -7,51 +7,32 @@ let song;
 
 
 function preload(){
-song1 = loadSound('Sounds/game_start.wav');
+songstart = loadSound('Sounds/game_start.wav');
 }
 
 function setup() {
 createCanvas(600, 400);
-img = loadImage('Images/pacman_PNG87.png');
- if (!song1.isPlaying()) {
-    song1.play(); 
-    song1.loop();
-     }
-
+imgpacman = loadImage('Images/pacman_PNG87.png');
+ 
 }
  
 
 function draw() {
  print(state);
-  background('black');
-  rectMode(CENTER);
-  fill('yellow');
-  rect(150, 120, 200, 75, 20);
-  fill('yellow');
-  rect(150, 270, 200, 75, 20);
-  textSize(50);
-  fill(0);
-  text('START', 75, 135);
-  text('EXIT', 100, 285);
-  image(img, 300, 80, 250, 250)
 
- 
-    
-
-  left = false
-  right = false
-  up = false
-  down = false
-
-  if (state == 2 && circleX > 25 && circleY > 25) {
-  if (left == true) 
-    circleX--
-  if (right == true)
-    circleX++
-  if(up == true)
-    circleY-=1
-  if (down == true)
-    circleY++
+  if (state == 1){
+    background('black');
+    rectMode(CENTER);
+    fill('yellow');
+    rect(150, 120, 200, 75, 20);
+    fill('yellow');
+    rect(150, 270, 200, 75, 20);
+    textSize(50);
+    fill(0);
+    text('START', 75, 135);
+    text('EXIT', 100, 285);
+    image(imgpacman, 300, 80, 250, 250)
+    songstart.stop();
   }
   
   if (state == 2) {
@@ -73,12 +54,18 @@ function draw() {
     if (mouseButton == RIGHT) {
       state = 1
     }
-  }
+    if (!songstart.isPlaying()) {
+    songstart.play(); 
+    songstart.loop();
+     }
+    }
+  
 
   if (state == 3) {
     background(0)
     fill(255, 0, 0)
-    text('BYE THEN OK', 30, 200)
+    text('SEE YOU NEXT TIME!', 30, 200)
+    songstart.stop();
   }
 }
 
@@ -86,7 +73,7 @@ function mouseClicked() {
   if (state == 1) {
     if (mouseX <= 300 && mouseX >= 100 && mouseY <= 160 && mouseY >= 85) {
       state = 2
-      song1.stop()
+      
       
     }
   }
@@ -94,8 +81,7 @@ function mouseClicked() {
     if (mouseX <= 300 && mouseX >= 100 && mouseY <= 310 && mouseY >= 235) {
       state = 3
       noLoop()
-      song1.stop()
-
+      
     }
   }
 }
