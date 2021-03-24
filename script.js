@@ -53,17 +53,22 @@ function draw() {
   if (down == true)
     circleY++
   }
-
- 
   
   if (state == 2) {
-    background(0, 0, 255);
-    circle(circleX, circleY, 50)
-    loop()
+    background('black');
+    fill('yellow')
+    text('LEVELS', 57, 60)
+    fill('yellow');
+    rect(150, 120, 200, 75, 20);
+    fill('yellow');
+    rect(150, 220, 200, 75, 20);
+    fill('yellow');
+    rect(150, 320, 200, 75, 20);
     if (mouseButton == RIGHT) {
       state = 1
     }
   }
+
   if (state == 3) {
     background(0)
     fill(255, 0, 0)
