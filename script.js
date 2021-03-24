@@ -60,10 +60,16 @@ function draw() {
     text('LEVELS', 57, 60)
     fill('yellow');
     rect(150, 120, 200, 75, 20);
+    fill('black')
+    text('level 1', 75, 137)
     fill('yellow');
     rect(150, 220, 200, 75, 20);
+    fill('black')
+    text('level 2', 75, 237)
     fill('yellow');
     rect(150, 320, 200, 75, 20);
+    fill('black')
+    text('level 3', 75, 337)
     if (mouseButton == RIGHT) {
       state = 1
     }
