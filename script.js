@@ -8,7 +8,8 @@ let song;
 
 function preload(){
 songstart = loadSound('Sounds/game_start.wav');
-soundbye = loadSound('Sounds/byebye.wav');
+soundbye = loadSound
+('Sounds/game_end.wav');
 }
 
 function setup() {
@@ -16,10 +17,13 @@ createCanvas(600, 400);
 imgpacman = loadImage('Images/pacman_PNG87.png');
  
 }
- 
 
 function draw() {
  print(state);
+
+  if (!songstart.isPlaying()) { 
+  songstart.loop();
+  }
 
   if (state == 1){
     background('black');
@@ -33,7 +37,6 @@ function draw() {
     text('START', 75, 135);
     text('EXIT', 100, 285);
     image(imgpacman, 300, 80, 250, 250)
-    songstart.stop();
   }
   
   if (state == 2) {
@@ -54,11 +57,8 @@ function draw() {
     text('level 3', 75, 337)
     if (mouseButton == RIGHT) {
       state = 1
+    songstart.stop();
     }
-    if (!songstart.isPlaying()) {
-    songstart.play(); 
-    songstart.loop();
-     }
   }
   
   if (state == 3) {
@@ -72,6 +72,7 @@ function draw() {
   if (state == 4) {
     background(0)
     fill(255, 0, 0)
+    circle(30, 30, 20);
     songstart.stop();
   }
 }
