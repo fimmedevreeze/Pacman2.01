@@ -8,22 +8,20 @@ let song;
 
 function preload(){
 songstart = loadSound('Sounds/game_start.wav');
-soundbye = loadSound
-('Sounds/game_end.wav');
+
 }
 
 function setup() {
 createCanvas(600, 400);
 imgpacman = loadImage('Images/pacman_PNG87.png');
- 
 }
+ 
+
+
 
 function draw() {
  print(state);
 
-  if (!songstart.isPlaying()) { 
-  songstart.loop();
-  }
 
   if (state == 1){
     background('black');
@@ -55,6 +53,9 @@ function draw() {
     rect(150, 320, 200, 75, 20);
     fill('black')
     text('level 3', 75, 337)
+    if (!songstart.isPlaying()) { 
+      songstart.loop();
+    }
     if (mouseButton == RIGHT) {
       state = 1
     songstart.stop();
@@ -71,9 +72,75 @@ function draw() {
 
   if (state == 4) {
     background(0)
-    fill(255, 0, 0)
-    circle(30, 30, 20);
     songstart.stop();
+    drawWorld();
+    food();
+    textSize(30);
+    fill(255);
+    strokeWeight(8);
+    stroke(0);
+    text(score, 10, 30);
+    var textMap = [
+['0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0'],
+['0 + - - - - + - - - - - + 0 + - - - - - + - - - - + 0'],
+['0 | 0 0 0 0 | 0 0 0 0 0 | 0 | 0 0 0 0 0 | 0 0 0 0 | 0'],
+['0 | 0 0 0 0 | 0 0 0 0 0 | 0 | 0 0 0 0 0 | 0 0 0 0 | 0'],
+['0 | 0 0 0 0 | 0 0 0 0 0 | 0 | 0 0 0 0 0 | 0 0 0 0 | 0'],
+['0 + - - - - + - - + - - + - + - - + - - + - - - - + 0'],
+['0 | 0 0 0 0 | 0 0 | 0 0 0 0 0 0 0 | 0 0 | 0 0 0 0 | 0'],
+['0 | 0 0 0 0 | 0 0 | 0 0 0 0 0 0 0 | 0 0 | 0 0 0 0 | 0'],
+['0 + - - - - + 0 0 + - - + 0 + - - + 0 0 + - - - - + 0'],
+['0 0 0 0 0 0 | 0 0 0 0 0 | 0 | 0 0 0 0 0 | 0 0 0 0 0 0'],
+['0 0 0 0 0 0 | 0 0 0 0 0 | 0 | 0 0 0 0 0 | 0 0 0 0 0 0'],
+['0 0 0 0 0 0 | 0 0 + - - + - + - - + 0 0 | 0 0 0 0 0 0'],
+['0 0 0 0 0 0 | 0 0 | 0 0 0 1 0 0 0 | 0 0 | 0 0 0 0 0 0'],
+['0 0 0 0 0 0 | 0 0 | 0 0 1 1 1 0 0 | 0 0 | 0 0 0 0 0 0'],
+['+ - - - - - + - - + 0 0 1 1 1 0 0 + - - + - - - - - +'],
+['0 0 0 0 0 0 | 0 0 | 0 0 0 0 0 0 0 | 0 0 | 0 0 0 0 0 0'],
+['0 0 0 0 0 0 | 0 0 + - - - - - - - + 0 0 | 0 0 0 0 0 0'],
+['0 0 0 0 0 0 | 0 0 | 0 0 0 0 0 0 0 | 0 0 | 0 0 0 0 0 0'],
+['0 0 0 0 0 0 | 0 0 | 0 0 0 0 0 0 0 | 0 0 | 0 0 0 0 0 0'],
+['0 + - - - - + - - + - - + 0 + - - + - - + - - - - + 0'],
+['0 | 0 0 0 0 | 0 0 0 0 0 | 0 | 0 0 0 0 0 | 0 0 0 0 | 0'],
+['0 | 0 0 0 0 | 0 0 0 0 0 | 0 | 0 0 0 0 0 | 0 0 0 0 | 0'],
+['0 + - + 0 0 + - - + - - + - + - - + - - + 0 0 + - + 0'],
+['0 0 0 | 0 0 | 0 0 | 0 0 0 0 0 0 0 | 0 0 | 0 0 | 0 0 0'],
+['0 0 0 | 0 0 | 0 0 | 0 0 0 0 0 0 0 | 0 0 | 0 0 | 0 0 0'],
+['0 + - + - - + 0 0 + - - + 0 + - - + 0 0 + - - + - + 0'],
+['0 | 0 0 0 0 0 0 0 0 0 0 | 0 | 0 0 0 0 0 0 0 0 0 0 | 0'],
+['0 | 0 0 0 0 0 0 0 0 0 0 | 0 | 0 0 0 0 0 0 0 0 0 0 | 0'],
+['0 + - - - - - - - - - - + - + - - - - - - - - - - + 0'],
+['0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0']
+];
+
+
+var world = [];
+
+    for(var i= 0; i < textMap.length; i++) {
+        for(var j = 0; j < textMap[j].length; j++) {
+            world.push(textMap[i][j].split(" "));
+        }
+    }
+
+function drawWorld() {
+    for(var y = 0; y < world.length; y++) {
+        for(var x = 0; x < world[y].length; x++) {
+            switch(world[y][x]) {
+                case '0':
+                    fill(22, 22, 250);
+                    strokeWeight(2);
+                    stroke(0);
+                    rect(x*cell, y*cell, cell, cell);
+                    break;
+                case '1':
+                    fill(0);
+                    rect(x*cell, y*cell, cell, cell);
+                    break;                
+                default:
+            }
+        }
+    }
+}
   }
 }
 
