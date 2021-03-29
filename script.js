@@ -76,7 +76,7 @@ function draw() {
     background('black')
     songstart.stop();
     fill('yellow');
-	  rect(xpos, ypos, 40, 40);
+	  ellipse(xpos, ypos, 40, 40);
 	  if(xpos >= 0 && xpos + 40 <= 600) xpos += xspeed;
    	if(ypos >= 0 && ypos + 40 <= 400) ypos += yspeed;
 	  }
@@ -85,7 +85,7 @@ function draw() {
     background('black')
     songstart.stop();
     fill('yellow');
-	  rect(xpos, ypos, 40, 40);
+	  ellipse(xpos, ypos, 40, 40);
 	  if(xpos >= 0 && xpos + 40 <= 600) xpos += xspeed;
    	if(ypos >= 0 && ypos + 40 <= 400) ypos += yspeed;
 	  }
