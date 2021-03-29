@@ -84,7 +84,16 @@ function draw() {
   if (state == 5) {
     background('black')
     songstart.stop();
-    fill('yellow');
+    fill('red');
+	  ellipse(xpos, ypos, 40, 40);
+	  if(xpos >= 0 && xpos + 40 <= 600) xpos += xspeed;
+   	if(ypos >= 0 && ypos + 40 <= 400) ypos += yspeed;
+	  }
+
+  if (state == 6) {
+    background('black')
+    songstart.stop();
+    fill('blue');
 	  ellipse(xpos, ypos, 40, 40);
 	  if(xpos >= 0 && xpos + 40 <= 600) xpos += xspeed;
    	if(ypos >= 0 && ypos + 40 <= 400) ypos += yspeed;
@@ -106,12 +115,14 @@ function mouseClicked() {
     }
   }
   else if (state == 2) {
-    if (mouseX <= 200 && mouseX >= 100 && mouseY <= 170 && mouseY >= 70) {
+    if (mouseX <= 200 && mouseX >= 100 && mouseY <= 160 && mouseY >= 80) {
       state = 4
     }
-    if (mouseX <= 200 && mouseX >= 100 && mouseY <= 250 && mouseY >= 200) {
+    if (mouseX <= 200 && mouseX >= 100 && mouseY <= 260 && mouseY >= 180) {
       state = 5
-     
+    }
+    if (mouseX <= 200 && mouseX >= 100 && mouseY <= 360 && mouseY >= 280) {
+      state = 6
     }
   } 
 }
