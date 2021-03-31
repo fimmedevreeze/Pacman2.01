@@ -9,6 +9,7 @@ let song;
 function preload(){
 songstart = loadSound('Sounds/game_start.wav');
 soundbye = loadSound('Sounds/game_end.wav');
+soundclick = loadSound('Sounds/credit.wav');
 wall = loadImage("Images/maartenslogo.png")
 }
 
@@ -98,12 +99,14 @@ function draw() {
 function mouseClicked() {
   if (state == 1) {
     if (mouseX <= 350 && mouseX >= 150 && mouseY <= 235 && mouseY >= 160) {
+      soundclick.play();
       state = 2
-      
+     
       
     }
 
      if (mouseX <= 350 && mouseX >= 150 && mouseY <= 385 && mouseY >= 310) {
+      soundclick.play();
       state = 3
       noLoop()
       
@@ -111,12 +114,15 @@ function mouseClicked() {
   }
   else if (state == 2) {
     if (mouseX <= 500 && mouseX >= 300 && mouseY <= 195 && mouseY >= 120) {
+      soundclick.play();
       state = 4
     }
     if (mouseX <= 500 && mouseX >= 300 && mouseY <= 305 && mouseY >= 230) {
+      soundclick.play();
       state = 5
     }
     if (mouseX <= 500 && mouseX >= 300 && mouseY <= 415 && mouseY >= 340) {
+      soundclick.play();
       state = 6
     }
   } 
