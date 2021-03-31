@@ -14,12 +14,15 @@ wall = loadImage("Images/maartenslogo.png")
 }
 
 function setup() {
-createCanvas(800, 494);
+createCanvas(800, 529);
+score = 0;
 imgpacman = loadImage('Images/pacman_PNG87.png');
 }
  
 
 var [xpos, ypos, xspeed, yspeed] = [225, 225, 0, 0];
+var score;
+
 
 function draw() {
  
@@ -79,7 +82,6 @@ function draw() {
     background('black')
     songstart.stop();
     drawWorld();
-    
 	  }
 
   if (state == 5) {
@@ -250,6 +252,11 @@ function drawWorld(){
 
           }   
      }
+   noStroke();
+   fill(255);
+   textSize(30);
+   textAlign(LEFT);
+   text(score, 5, height - 5);
   }
 
 
