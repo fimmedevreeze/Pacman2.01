@@ -9,10 +9,11 @@ let song;
 function preload(){
 songstart = loadSound('Sounds/game_start.wav');
 soundbye = loadSound('Sounds/game_end.wav');
+wall = loadImage("Images/maartenslogo.png")
 }
 
 function setup() {
-createCanvas(600, 400);
+createCanvas(608, 408);
 imgpacman = loadImage('Images/pacman_PNG87.png');
 }
  
@@ -191,8 +192,8 @@ function drawWorld(){
       for(var x = 0; x < 16; x++){          
           if (level[y][x] == 1){
              
-             fill(255,0,125);
-             rect(x * 40, y* 40, 40, 40);   
+            //  fill(255,0,125);
+             image(wall, x * 38, y* 37, 38, 37);   
           }
           else if(level[y][x] == 2){
              
