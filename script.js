@@ -44,19 +44,19 @@ function draw() {
   if (state == 2) {
     background('black');
     fill('yellow')
-    text('LEVELS', 57, 60)
+    text('LEVELS', 308, 70)
     fill('yellow');
-    rect(150, 120, 200, 75, 20);
+    rect(400, 160, 200, 75, 20);
     fill('black')
-    text('level 1', 75, 137)
+    text('level 1', 325, 177)
     fill('yellow');
-    rect(150, 220, 200, 75, 20);
+    rect(400, 270, 200, 75, 20);
     fill('black')
-    text('level 2', 75, 237)
+    text('level 2', 325, 287)
     fill('yellow');
-    rect(150, 320, 200, 75, 20);
+    rect(400, 380, 200, 75, 20);
     fill('black')
-    text('level 3', 75, 337)
+    text('level 3', 325, 397)
     if (!songstart.isPlaying()) { 
       songstart.loop();
     }
@@ -69,7 +69,7 @@ function draw() {
   if (state == 3) {
     background(0)
     fill(255, 0, 0)
-    text('SEE YOU NEXT TIME!', 30, 200)
+    text('SEE YOU NEXT TIME!', 140, 250)
     songstart.stop();
     soundbye.play();
   }
@@ -97,26 +97,26 @@ function draw() {
 
 function mouseClicked() {
   if (state == 1) {
-    if (mouseX <= 300 && mouseX >= 100 && mouseY <= 160 && mouseY >= 85) {
+    if (mouseX <= 350 && mouseX >= 150 && mouseY <= 235 && mouseY >= 160) {
       state = 2
       
       
     }
 
-     if (mouseX <= 300 && mouseX >= 100 && mouseY <= 310 && mouseY >= 235) {
+     if (mouseX <= 350 && mouseX >= 150 && mouseY <= 385 && mouseY >= 310) {
       state = 3
       noLoop()
       
     }
   }
   else if (state == 2) {
-    if (mouseX <= 200 && mouseX >= 100 && mouseY <= 160 && mouseY >= 80) {
+    if (mouseX <= 500 && mouseX >= 300 && mouseY <= 195 && mouseY >= 120) {
       state = 4
     }
-    if (mouseX <= 200 && mouseX >= 100 && mouseY <= 260 && mouseY >= 180) {
+    if (mouseX <= 500 && mouseX >= 300 && mouseY <= 305 && mouseY >= 230) {
       state = 5
     }
-    if (mouseX <= 200 && mouseX >= 100 && mouseY <= 360 && mouseY >= 280) {
+    if (mouseX <= 500 && mouseX >= 300 && mouseY <= 415 && mouseY >= 340) {
       state = 6
     }
   } 
