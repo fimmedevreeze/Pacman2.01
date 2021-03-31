@@ -29,14 +29,17 @@ function draw() {
     background('black');
     rectMode(CENTER);
     fill('yellow');
-    rect(150, 120, 200, 75, 20);
+    rect(400, 50, 500, 50, 20);
     fill('yellow');
-    rect(150, 270, 200, 75, 20);
+    rect(250, 200, 200, 75, 20);
+    fill('yellow');
+    rect(250, 350, 200, 75, 20);
     textSize(50);
     fill(0);
-    text('START', 75, 135);
-    text('EXIT', 100, 285);
-    image(imgpacman, 300, 80, 250, 250)
+    text('PACMAN', 296, 68);
+    text('START', 175, 215);
+    text('EXIT', 200, 365);
+    image(imgpacman, 450, 150, 250, 250)
   }
   
   if (state == 2) {
