@@ -89,6 +89,7 @@ function draw() {
 	  ellipse(xpos, ypos, 40, 40);
 	  if(xpos >= 0 && xpos + 40 <= 600) xpos += xspeed;
    	if(ypos >= 0 && ypos + 40 <= 400) ypos += yspeed;
+    drawGhost();
 	  }
 
   if (state == 6) {
@@ -203,4 +204,14 @@ function drawWorld(){
                   
      }
   }
+}
+
+function drawGhost(){
+  fill('blue')
+  ellipse(x, height/2, 20, 20);
+  x = x + speed;
+  
+  if(x > width - 10 || x < 10){
+    speed = -speed;
+}
 }
