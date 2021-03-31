@@ -20,3 +20,8 @@ body {
   display: inline-grid;
 }
 
+.p5Canvas{
+    position: fixed;
+    top: 20%;
+    right: 28%;
+}
