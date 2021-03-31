@@ -8,7 +8,7 @@ let song;
 
 function preload(){
 songstart = loadSound('Sounds/game_start.wav');
-//soundbye = loadSound('Sounds/game_end.wav');
+soundbye = loadSound('Sounds/game_end.wav');
 }
 
 function setup() {
@@ -72,12 +72,12 @@ function draw() {
   }
 
   if (state == 4) {
-   // background('black')
-    //songstart.stop();
-    //fill('yellow');
-	  //ellipse(xpos, ypos, 40, 40);
-	 // if(xpos >= 0 && xpos + 40 <= 600) xpos += xspeed;
-   //	if(ypos >= 0 && ypos + 40 <= 400) ypos += yspeed;
+    background('black')
+    songstart.stop();
+    fill('yellow');
+	  ellipse(xpos, ypos, 40, 40);
+	  if(xpos >= 0 && xpos + 40 <= 600) xpos += xspeed;
+   	if(ypos >= 0 && ypos + 40 <= 400) ypos += yspeed;
     drawWorld();
 	  }
 
@@ -171,25 +171,35 @@ function keyReleased() {
 	}
 }
 
-var map = [ 
-  [1,1,1,1,1],
-  [1,1,1,1,1],
-  [1,1,1,1,1],
-  [1,1,1,1,1],
-  [1,1,1,1,1]
-] 
+var level = [ 
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  
+];
 
-function drawWorld(){
-  for(var y = 0; y =< 4 ; y = y + 1){
-      //console.log(map[y])
-      for(var x = 0; x =< 4; x = x +1){
-          console.log(map[y][x])
-          if (map[y][x] === 1){
-              document.getElementById('world').innerHTML += "<div class='wall'></div>"
+function drawWorld(){  
+  for(var y = 0; y < 16 ; y++){    
+      for(var x = 0; x < 16; x++){          
+          if (level[y][x] == 1){
+             
+             fill(255,0,125);
+             rect(x * 40, y* 40, 40, 40);   
           }
-          
+          else if(level[y][x] == 2){
+             
+             
+             
+          }
+                  
      }
   }
-
 }
-     
