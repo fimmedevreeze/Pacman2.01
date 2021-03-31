@@ -18,7 +18,6 @@ imgpacman = loadImage('Images/pacman_PNG87.png');
 }
  
 
-
 var [xpos, ypos, xspeed, yspeed] = [225, 225, 0, 0];
 
 function draw() {
@@ -78,20 +77,13 @@ function draw() {
   if (state == 4) {
     background('black')
     songstart.stop();
-    fill('yellow');
-	  ellipse(xpos, ypos, 25, 26);
-	  if(xpos >= 0 && xpos + 25 <= 850) xpos += xspeed;
-   	if(ypos >= 0 && ypos + 26 <= 500) ypos += yspeed;
     drawWorld();
+    
 	  }
 
   if (state == 5) {
     background('black')
     songstart.stop();
-    fill('red');
-	  ellipse(xpos, ypos, 25, 26);
-	  if(xpos >= 0 && xpos + 25 <= 850) xpos += xspeed;
-   	if(ypos >= 0 && ypos + 26 <= 500) ypos += yspeed;
     drawWorld();
     drawGhost();
 	  }
@@ -99,10 +91,6 @@ function draw() {
   if (state == 6) {
     background('black')
     songstart.stop();
-    fill('blue');
-	  ellipse(xpos, ypos, 25, 26);
-	  if(xpos >= 0 && xpos + 25 <= 850) xpos += xspeed;
-   	if(ypos >= 0 && ypos + 26 <= 500) ypos += yspeed;
     drawWorld();
 	  }
 }
@@ -134,7 +122,12 @@ function mouseClicked() {
   } 
 }
 
-
+function pacman(){
+    fill('yellow');
+    ellipse(xpos, ypos, 25, 26);
+	  if(xpos >= 0 && xpos + 25 <= 850) xpos += xspeed;
+   	if(ypos >= 0 && ypos + 26 <= 500) ypos += yspeed;
+}
 
 function keyPressed() {
 	switch(keyCode) {
@@ -196,7 +189,7 @@ var level = [
   [1,1,2,2,2,2,1,2,2,1,1,1,2,2,2,2,2,2,2,2,1,1,1,2,2,1,2,2,2,2,1,1],
   [1,1,2,1,1,2,2,1,2,1,2,2,2,1,1,1,1,1,1,2,2,2,1,2,1,2,2,1,1,2,1,1],
   [1,2,2,1,2,1,2,2,2,1,1,1,1,1,2,2,2,2,1,1,1,1,1,2,2,2,1,2,1,2,2,1],
-  [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
+  [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,6,2,1],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
   
 ];
@@ -242,9 +235,17 @@ function drawWorld(){
                 
 
           }        
+          else if(level[y][x] == 6){
+                pacman();
+                
+                
+
+          }            
+
+          }   
      }
   }
-}
+
 
             
         
@@ -259,3 +260,4 @@ function drawGhost(){
    speed = -speed;
 }
 }
+
