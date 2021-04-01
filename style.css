@@ -26,5 +26,7 @@ canvas{
   margin-right: auto;
   width: 50%;
   margin-top: 13%;
-  border:1px solid yellow;
+  border:5px solid;
+  border-image: linear-gradient(0deg, black, yellow) 1;
+  animation: gradient 10s ease infinite;
 }
