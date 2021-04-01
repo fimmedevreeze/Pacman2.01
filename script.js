@@ -79,6 +79,8 @@ function draw() {
     
     levelnumber = 1;
    
+    ghostMove();
+
 	  }
 
   if (state == 5) {
@@ -90,7 +92,8 @@ function draw() {
     gameEnded();
     levelnumber = 2;
     
-    
+    ghostMove();
+
     
 	  }
 
@@ -103,6 +106,8 @@ function draw() {
     gameEnded();
     levelnumber = 3;
    
+    ghostMove();
+
   }
 
   if (state == 7) {
@@ -226,14 +231,13 @@ function drawWorld(){
                
                 fill('blue')
                 ellipse(x * 25 +14 , y * 26 +14 , 20, 20);
-                
 
           }        
           else if(level[y][x] == 4){
                
                 fill('orange')
                 ellipse(x * 25 +14 , y * 26 +14 , 20, 20);
-                
+
 
           }        
 
@@ -241,7 +245,6 @@ function drawWorld(){
                
                 fill('red')
                 ellipse(x * 25 +14 , y * 26 +14 , 20, 20);
-                
 
           }        
           else if(level[y][x] == 6){
@@ -464,3 +467,75 @@ function gameEnded(){
   }
 }
 
+var ghost = {
+  x: 15,
+  y:  7,
+}
+
+function ghostMove() {
+  switch (getRndInteger()) {
+    case 1:
+      if (level[ghost.y][ghost.x-1] !== 1){
+        if (level[ghost.y][ghost.x-1] === 2) {
+         level[ghost.y][ghost.x] = 2;
+         ghost.x = ghost.x - 1;
+         level[ghost.y][ghost.x] = 3;
+        }
+        else if (level[ghost.y][ghost.x-1] === 0) { 
+         level[ghost.y][ghost.x] = 0;
+         ghost.x = ghost.x - 1;
+         level[ghost.y][ghost.x] = 3;
+        }
+       drawWorld();
+      }
+      break;
+    case 2: 
+    if (level[ghost.y][ghost.x+1] !== 1){
+      if (level[ghost.y][ghost.x+1] === 2) {         
+         level[ghost.y][ghost.x] = 2;
+         ghost.x = ghost.x + 1;
+         level[ghost.y][ghost.x] = 3;
+        }
+        else if (level[ghost.y][ghost.x+1] === 0) { 
+         level[ghost.y][ghost.x] = 0;
+         ghost.x = ghost.x + 1;
+         level[ghost.y][ghost.x] = 3;
+        }   
+       drawWorld();
+      }
+      break;
+    case 3:     
+    if (level[ghost.y-1][ghost.x] !== 1){
+      if (level[ghost.y-1][ghost.x] === 2) {       
+        ghost.y = ghost.y - 1;
+        level[ghost.y][ghost.x] = 3;
+        }
+        else if (level[ghost.y-1][ghost.x] === 0) { 
+        ghost.y = ghost.y - 1;
+        level[ghost.y][ghost.x] = 3;
+        }
+       drawWorld();
+      } 
+      break;
+    case 4:
+    if (level[ghost.y+1][ghost.x] !== 1){
+      if (level[ghost.y+1][ghost.x] === 2) {       
+        ghost.y = ghost.y + 1;
+        level[ghost.y][ghost.x] = 3;
+        }
+        else if (level[ghost.y+1][ghost.x] === 0) { 
+        ghost.y = ghost.y + 1;
+       level[ghost.y][ghost.x] = 3;
+        }
+        drawWorld();
+      }
+      break;
+      }
+  }
+
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (1) ) + 1;
+}
+
+
+//de functie ghostMove(); vervolgens aanroepen in state 456
