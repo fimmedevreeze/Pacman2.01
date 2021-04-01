@@ -46,15 +46,15 @@ function draw() {
     fill('yellow');
     rect(400, 160, 200, 75, 20);
     fill('black')
-    text('level 1', 325, 177)
+    text('Level 1', 325, 177)
     fill('yellow');
     rect(400, 270, 200, 75, 20);
     fill('black')
-    text('level 2', 325, 287)
+    text('Level 2', 325, 287)
     fill('yellow');
     rect(400, 380, 200, 75, 20);
     fill('black')
-    text('level 3', 325, 397)
+    text('Level 3', 325, 397)
     songstart.stop();
     if (mouseButton == RIGHT) {
       state = 1
@@ -76,6 +76,7 @@ function draw() {
     }
     drawWorld();
     gameEnded();
+    
     levelnumber = 1;
    
 	  }
@@ -187,7 +188,7 @@ var level = [
   [1,2,2,1,2,1,2,2,1,1,1,2,1,1,1,2,2,1,1,1,2,1,1,1,2,2,1,2,1,2,2,1],
   [1,2,2,2,2,2,2,2,2,1,2,0,0,0,0,2,2,0,0,0,0,2,1,2,2,2,2,2,2,2,2,1],
   [1,1,1,1,1,1,2,1,2,1,2,0,1,1,1,2,2,1,1,1,0,2,1,2,1,2,1,1,1,1,1,1],
-  [0,0,0,0,0,1,2,1,2,1,2,0,1,3,4,5,5,4,3,1,0,2,1,2,1,2,1,0,0,0,0,0],
+  [0,0,0,0,0,1,2,1,2,1,2,0,1,3,4,5,0,0,0,1,0,2,1,2,1,2,1,0,0,0,0,0],
   [1,1,1,1,1,1,2,1,2,1,2,0,1,1,1,1,1,1,1,1,0,2,1,2,1,2,1,1,1,1,1,1],
   [1,2,2,2,2,2,2,2,2,1,2,0,0,0,0,0,0,0,0,0,0,2,1,2,2,2,2,2,2,2,2,1],
   [1,2,2,1,2,1,2,2,1,1,1,2,1,1,1,2,2,1,1,1,2,1,1,1,2,2,1,2,1,2,2,1],
@@ -256,10 +257,12 @@ function drawWorld(){
    drawLives();
    levelNumber();
   }
+
 var pacman = {
   x: 16,
   y: 16 ,
 }
+
 
 
 var score = 0;
@@ -311,22 +314,31 @@ function keyPressed() {
         if (level[pacman.y][pacman.x-1] === 2) {
          score = score + 5;
          soundeat.play();
+         level[pacman.y][pacman.x] = 0;
+         pacman.x = pacman.x - 1;
+      level[pacman.y][pacman.x] = 6;
         }
         else if (level[pacman.y][pacman.x-1] === 3) { 
          lives = lives - 1;
          sounddeath.play();
+        pacman.x = pacman.x
         }
          else if (level[pacman.y][pacman.x-1] === 4) { 
          lives = lives - 1;
          sounddeath.play();
+         pacman.x = pacman.x
         }
          else if (level[pacman.y][pacman.x-1] === 5) { 
          lives = lives - 1;
          sounddeath.play();
+         pacman.x = pacman.x
         }
-      level[pacman.y][pacman.x] = 0;
-      pacman.x = pacman.x - 1;
+        else if (level[pacman.y][pacman.x-1] === 0) { 
+         level[pacman.y][pacman.x] = 0;
+         pacman.x = pacman.x - 1;
       level[pacman.y][pacman.x] = 6;
+        }
+      
       drawWorld();
       }
 			break;
@@ -336,22 +348,32 @@ function keyPressed() {
       if (level[pacman.y][pacman.x+1] === 2) {
          score = score + 5;
          soundeat.play();
+         level[pacman.y][pacman.x] = 0;
+         pacman.x = pacman.x + 1;
+      level[pacman.y][pacman.x] = 6;
         }
       else if (level[pacman.y][pacman.x+1] === 3) { 
          lives = lives - 1;
          sounddeath.play();
+         pacman.x = pacman.x
         }  
         else if (level[pacman.y][pacman.x+1] === 4) { 
          lives = lives - 1;
          sounddeath.play();
+          pacman.x = pacman.x
         }  
         else if (level[pacman.y][pacman.x+1] === 5) { 
          lives = lives - 1;
          sounddeath.play();
+         pacman.x = pacman.x
         }  
-		  level[pacman.y][pacman.x] = 0;
-      pacman.x = pacman.x + 1;
+        else if (level[pacman.y][pacman.x+1] === 0) { 
+          level[pacman.y][pacman.x] = 0;
+          pacman.x = pacman.x + 1;
       level[pacman.y][pacman.x] = 6;
+        }  
+		 
+     
       drawWorld();
       }
 			break;
@@ -361,22 +383,31 @@ function keyPressed() {
       if (level[pacman.y-1][pacman.x] === 2) {
          score = score + 5;
          soundeat.play();
+          level[pacman.y][pacman.x] = 0;
+          pacman.y = pacman.y - 1;
+       level[pacman.y][pacman.x] = 6;
         }
         else if (level[pacman.y-1][pacman.x] === 3) { 
          lives = lives - 1;
          sounddeath.play();
+         pacman.y = pacman.y
         }
         else if (level[pacman.y-1][pacman.x] === 4) { 
          lives = lives - 1;
          sounddeath.play();
+         pacman.y = pacman.y
         }
         else if (level[pacman.y-1][pacman.x] === 5) { 
          lives = lives - 1;
          sounddeath.play();
+         pacman.y = pacman.y
         }
-		  level[pacman.y][pacman.x] = 0;
-      pacman.y = pacman.y - 1;
+        else if (level[pacman.y-1][pacman.x] === 0) { 
+          level[pacman.y][pacman.x] = 0;
+          pacman.y = pacman.y - 1;
        level[pacman.y][pacman.x] = 6;
+        }
+      
       drawWorld();
       } 
 			break;
@@ -386,23 +417,35 @@ function keyPressed() {
       if (level[pacman.y+1][pacman.x] === 2) {
          score = score + 5;
          soundeat.play();
+         	level[pacman.y][pacman.x] = 0;
+          pacman.y = pacman.y + 1;
+          level[pacman.y][pacman.x] = 6;
+         
         }
          else if (level[pacman.y+1][pacman.x] === 3) { 
          lives = lives - 1;
          sounddeath.play();
+          pacman.y = pacman.y
+         	
         }
         else if (level[pacman.y+1][pacman.x] === 4) { 
          lives = lives - 1;
          sounddeath.play();
+          pacman.y = pacman.y
+         
         }
         else if (level[pacman.y+1][pacman.x] === 5) { 
          lives = lives - 1;
          sounddeath.play();
+         pacman.y = pacman.y
+         	
         }
-			level[pacman.y][pacman.x] = 0;
-      pacman.y = pacman.y + 1;
-      level[pacman.y][pacman.x] = 6;
-      drawWorld();
+        else if (level[pacman.y+1][pacman.x] === 0) { 
+         	level[pacman.y][pacman.x] = 0;
+          pacman.y = pacman.y + 1;
+          level[pacman.y][pacman.x] = 6;
+        }
+	
       }
       
 			break;
@@ -420,3 +463,4 @@ function gameEnded(){
     soundgameover.play();
   }
 }
+
