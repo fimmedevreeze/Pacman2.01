@@ -62,12 +62,11 @@ function draw() {
   }
   
   if (state == 3) {
-    background(0)
+    background("black")
     fill(255, 0, 0)
     text('SEE YOU NEXT TIME!', 140, 250)
     songstart.stop();
     soundbye.play();
-    keyPressed();
   }
 
   if (state == 4) {
@@ -172,6 +171,7 @@ function mouseClicked() {
       soundclick.play();
       state = 3      
   }
+ 
 }
 }
 
