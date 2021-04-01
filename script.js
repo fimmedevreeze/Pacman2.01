@@ -98,8 +98,23 @@ function draw() {
     songstart.stop();
     drawWorld();
    // pacman();
+  }
+
+  if (state == 7) {
+    songstart.stop();
+    background('black');
+    rectMode(CENTER);
+    fill('yellow');
+    rect(400, 50, 500, 50, 20);
+    fill('yellow');
+    rect(250, 350, 200, 75, 20);
+    textSize(50);
+    fill(0);
+    text('EINDE SPEL', 296, 68);
+    text('EXIT', 200, 365);
+    image(imgpacman, 450, 150, 250, 250)
+  }
    
-	  }
 }
 
 function mouseClicked() {
@@ -110,6 +125,7 @@ function mouseClicked() {
      
       
     }
+  }
 
      if (mouseX <= 350 && mouseX >= 150 && mouseY <= 385 && mouseY >= 310) {
       soundclick.play();
@@ -117,7 +133,6 @@ function mouseClicked() {
       noLoop()
       
     }
-  }
   else if (state == 2) {
     if (mouseX <= 500 && mouseX >= 300 && mouseY <= 195 && mouseY >= 120) {
       soundclick.play();
@@ -132,6 +147,12 @@ function mouseClicked() {
       state = 6
     }
   } 
+  else if (state == 7) {
+     if (mouseX <= 350 && mouseX >= 150 && mouseY <= 385 && mouseY >= 310) {
+      soundclick.play();
+      state = 2      
+  }
+}
 }
 
 
@@ -301,4 +322,3 @@ function drawGhost(){
    speed = -speed;
 }
 }
-
