@@ -10,6 +10,8 @@ songstart = loadSound('Sounds/game_start.wav');
 soundbye = loadSound('Sounds/game_end.wav');
 soundclick = loadSound('Sounds/credit.wav');
 soundeat = loadSound('Sounds/eat_fruit.wav');
+sounddeath = loadSound('Sounds/death_2.wav');
+soundgameover = loadSound('Sounds/death_1.wav');
 wall = loadImage("Images/maartenslogo.png")
 }
 
@@ -53,12 +55,9 @@ function draw() {
     rect(400, 380, 200, 75, 20);
     fill('black')
     text('level 3', 325, 397)
-    if (!songstart.isPlaying()) { 
-      songstart.loop();
-    }
+    songstart.stop();
     if (mouseButton == RIGHT) {
       state = 1
-    songstart.stop();
     }
   }
   
@@ -73,7 +72,9 @@ function draw() {
 
   if (state == 4) {
     background('black')
-    songstart.stop();
+    if (!songstart.isPlaying()) { 
+      songstart.loop();
+    }
     drawWorld();
     gameEnded();
     levelnumber = 1;
@@ -82,7 +83,9 @@ function draw() {
 
   if (state == 5) {
     background('black')
-    songstart.stop();
+    if (!songstart.isPlaying()) { 
+      songstart.loop();
+    }
     drawWorld();
     gameEnded();
     levelnumber = 2;
@@ -93,7 +96,9 @@ function draw() {
 
   if (state == 6) {
     background('black')
-    songstart.stop();
+    if (!songstart.isPlaying()) { 
+      songstart.loop();
+    }
     drawWorld();
     gameEnded();
     levelnumber = 3;
@@ -111,6 +116,21 @@ function draw() {
     textSize(50);
     fill(0);
     text('EINDE SPEL', 296, 68);
+    text('EXIT', 200, 365);
+    image(imgpacman, 450, 150, 250, 250)
+  }
+
+  if (state == 8) {
+    songstart.stop();
+    background('black');
+    rectMode(CENTER);
+    fill('yellow');
+    rect(400, 50, 500, 50, 20);
+    fill('yellow');
+    rect(250, 350, 200, 75, 20);
+    textSize(50);
+    fill(0);
+    text('GAME OVER', 296, 68);
     text('EXIT', 200, 365);
     image(imgpacman, 450, 150, 250, 250)
   }
@@ -294,12 +314,15 @@ function keyPressed() {
         }
         else if (level[pacman.y][pacman.x-1] === 3) { 
          lives = lives - 1;
+         sounddeath.play();
         }
          else if (level[pacman.y][pacman.x-1] === 4) { 
          lives = lives - 1;
+         sounddeath.play();
         }
          else if (level[pacman.y][pacman.x-1] === 5) { 
          lives = lives - 1;
+         sounddeath.play();
         }
       level[pacman.y][pacman.x] = 0;
       pacman.x = pacman.x - 1;
@@ -316,12 +339,15 @@ function keyPressed() {
         }
       else if (level[pacman.y][pacman.x+1] === 3) { 
          lives = lives - 1;
+         sounddeath.play();
         }  
         else if (level[pacman.y][pacman.x+1] === 4) { 
          lives = lives - 1;
+         sounddeath.play();
         }  
         else if (level[pacman.y][pacman.x+1] === 5) { 
          lives = lives - 1;
+         sounddeath.play();
         }  
 		  level[pacman.y][pacman.x] = 0;
       pacman.x = pacman.x + 1;
@@ -338,12 +364,15 @@ function keyPressed() {
         }
         else if (level[pacman.y-1][pacman.x] === 3) { 
          lives = lives - 1;
+         sounddeath.play();
         }
         else if (level[pacman.y-1][pacman.x] === 4) { 
          lives = lives - 1;
+         sounddeath.play();
         }
         else if (level[pacman.y-1][pacman.x] === 5) { 
          lives = lives - 1;
+         sounddeath.play();
         }
 		  level[pacman.y][pacman.x] = 0;
       pacman.y = pacman.y - 1;
@@ -360,12 +389,15 @@ function keyPressed() {
         }
          else if (level[pacman.y+1][pacman.x] === 3) { 
          lives = lives - 1;
+         sounddeath.play();
         }
         else if (level[pacman.y+1][pacman.x] === 4) { 
          lives = lives - 1;
+         sounddeath.play();
         }
         else if (level[pacman.y+1][pacman.x] === 5) { 
          lives = lives - 1;
+         sounddeath.play();
         }
 			level[pacman.y][pacman.x] = 0;
       pacman.y = pacman.y + 1;
@@ -384,8 +416,7 @@ function gameEnded(){
     
   }
   else if (lives === 0){
-    background(0)
-    fill(255, 0, 0)
-    text('GAME OVER', 140, 250)
+    state = 8;
+    soundgameover.play();
   }
 }
