@@ -15,13 +15,11 @@ wall = loadImage("Images/maartenslogo.png")
 
 function setup() {
 createCanvas(800, 529);
-score = 0;
 imgpacman = loadImage('Images/pacman_PNG87.png');
 }
  
 
 
-var score;
 
 
 function draw() {
@@ -166,6 +164,8 @@ var pacman = {
   y: 16 ,
 }
 
+var score = 0;
+
 function drawWorld(){  
   for(var y = 0; y < 19 ; y++){    
       for(var x = 0; x < 32; x++){          
@@ -243,6 +243,9 @@ function keyPressed() {
 		case 37:
     case 65:
       if (level[pacman.y][pacman.x-1] !== 1){
+        if (level[pacman.y][pacman.x-1] === 2) {
+         score = score + 10;
+        }
       level[pacman.y][pacman.x] = 0;
       pacman.x = pacman.x - 1;
       level[pacman.y][pacman.x] = 6;
@@ -252,6 +255,9 @@ function keyPressed() {
 		case 39:
     case 68:		
     if (level[pacman.y][pacman.x+1] !== 1){
+      if (level[pacman.y][pacman.x+1] === 2) {
+         score = score + 10;
+        }
 		  level[pacman.y][pacman.x] = 0;
       pacman.x = pacman.x + 1;
       level[pacman.y][pacman.x] = 6;
@@ -261,6 +267,9 @@ function keyPressed() {
 		case 38:
     case 87:		
     if (level[pacman.y-1][pacman.x] !== 1){
+      if (level[pacman.y-1][pacman.x] === 2) {
+         score = score + 10;
+        }
 		  level[pacman.y][pacman.x] = 0;
       pacman.y = pacman.y - 1;
        level[pacman.y][pacman.x] = 6;
@@ -270,6 +279,9 @@ function keyPressed() {
 		case 40:
     case 83:		
     if (level[pacman.y+1][pacman.x] !== 1){
+      if (level[pacman.y+1][pacman.x-1] === 2) {
+         score = score + 10;
+        }
 			level[pacman.y][pacman.x] = 0;
       pacman.y = pacman.y + 1;
       level[pacman.y][pacman.x] = 6;
