@@ -76,6 +76,7 @@ function draw() {
     songstart.stop();
     drawWorld();
     gameEnded();
+    levelnumber = 1;
    
 	  }
 
@@ -84,7 +85,8 @@ function draw() {
     songstart.stop();
     drawWorld();
     gameEnded();
-    //drawGhost();
+    levelnumber = 2;
+    
     
     
 	  }
@@ -94,6 +96,7 @@ function draw() {
     songstart.stop();
     drawWorld();
     gameEnded();
+    levelnumber = 3;
    
   }
 
@@ -239,7 +242,7 @@ var pacman = {
 }
 
 var score = 0;
-
+var levelnumber;
 
 function drawScore(){
    noStroke();
@@ -262,7 +265,7 @@ function levelNumber(){
    fill(255);
    textSize(30);
    textAlign(LEFT);
-   text('Level' , 370, height - 5);
+   text("Level" + " " + levelnumber , 355, height - 5);
 
 }
 
