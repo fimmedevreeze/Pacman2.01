@@ -146,7 +146,7 @@ function mouseClicked() {
   else if (state == 7) {
      if (mouseX <= 350 && mouseX >= 150 && mouseY <= 385 && mouseY >= 310) {
       soundclick.play();
-      state = 2      
+      state = 3      
   }
 }
 }
