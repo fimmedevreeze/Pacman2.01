@@ -335,19 +335,9 @@ function keyPressed() {
  
 
 function gameEnded(){
-  if (score === 100){
+  if (score === 1405){
      state = 7;
     
   }
     
-}
-
-function drawGhost(){
-  fill('blue')
-  ellipse(x, height/2, 20, 20);
-  x = x + speed;
-  
-  if(x > width - 10 || x < 10){
-   speed = -speed;
-}
 }
