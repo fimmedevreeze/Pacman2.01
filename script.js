@@ -277,7 +277,7 @@ function drawScore(){
    fill(255);
    textSize(30);
    textAlign(LEFT);
-   text(score, 5, height - 5);
+   text("Score" + " " + score, 5, height - 5);
 
 }
 function drawLives(){
@@ -285,7 +285,7 @@ function drawLives(){
    fill(255);
    textSize(30);
    textAlign(left);
-   text(lives, 775, height - 5);
+   text("Lives" + " " + lives, 700, height - 5);
 
 }
 function levelNumber(){
