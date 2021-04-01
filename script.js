@@ -506,7 +506,8 @@ function ghostMove() {
       break;
     case 3:     
     if (level[ghost.y-1][ghost.x] !== 1){
-      if (level[ghost.y-1][ghost.x] === 2) {       
+      if (level[ghost.y-1][ghost.x] === 2) {   
+        level[ghost.y][ghost.x] = 2;    
         ghost.y = ghost.y - 1;
         level[ghost.y][ghost.x] = 3;
         }
@@ -519,7 +520,8 @@ function ghostMove() {
       break;
     case 4:
     if (level[ghost.y+1][ghost.x] !== 1){
-      if (level[ghost.y+1][ghost.x] === 2) {       
+      if (level[ghost.y+1][ghost.x] === 2) { 
+        level[ghost.y][ghost.x] = 2;      
         ghost.y = ghost.y + 1;
         level[ghost.y][ghost.x] = 3;
         }
