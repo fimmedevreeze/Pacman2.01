@@ -9,6 +9,7 @@ function preload(){
 songstart = loadSound('Sounds/game_start.wav');
 soundbye = loadSound('Sounds/game_end.wav');
 soundclick = loadSound('Sounds/credit.wav');
+soundeat = loadSound('Sounds/eat_fruit.wav');
 wall = loadImage("Images/maartenslogo.png")
 }
 
@@ -287,6 +288,7 @@ function keyPressed() {
       if (level[pacman.y][pacman.x-1] !== 1){
         if (level[pacman.y][pacman.x-1] === 2) {
          score = score + 5;
+         soundeat.play();
         }
       level[pacman.y][pacman.x] = 0;
       pacman.x = pacman.x - 1;
@@ -299,6 +301,7 @@ function keyPressed() {
     if (level[pacman.y][pacman.x+1] !== 1){
       if (level[pacman.y][pacman.x+1] === 2) {
          score = score + 5;
+         soundeat.play();
         }
 		  level[pacman.y][pacman.x] = 0;
       pacman.x = pacman.x + 1;
@@ -311,6 +314,7 @@ function keyPressed() {
     if (level[pacman.y-1][pacman.x] !== 1){
       if (level[pacman.y-1][pacman.x] === 2) {
          score = score + 5;
+         soundeat.play();
         }
 		  level[pacman.y][pacman.x] = 0;
       pacman.y = pacman.y - 1;
@@ -323,6 +327,7 @@ function keyPressed() {
     if (level[pacman.y+1][pacman.x] !== 1){
       if (level[pacman.y+1][pacman.x-1] === 2) {
          score = score + 5;
+         soundeat.play();
         }
 			level[pacman.y][pacman.x] = 0;
       pacman.y = pacman.y + 1;
