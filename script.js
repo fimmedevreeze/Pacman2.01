@@ -241,7 +241,9 @@ var pacman = {
   y: 16 ,
 }
 
+
 var score = 0;
+var lives = 3;
 var levelnumber;
 
 function drawScore(){
@@ -257,7 +259,7 @@ function drawLives(){
    fill(255);
    textSize(30);
    textAlign(left);
-   text(3, 775, height - 5);
+   text(lives, 775, height - 5);
 
 }
 function levelNumber(){
@@ -280,9 +282,6 @@ function drawPacman(){
   }
 }
 }
-
-
-
 
 function keyPressed() {
   	switch(keyCode) {
@@ -347,5 +346,9 @@ function gameEnded(){
      state = 7;
     
   }
-    
+  else if (lives === 0){
+    background(0)
+    fill(255, 0, 0)
+    text('GAME OVER', 140, 250)
+  }
 }
