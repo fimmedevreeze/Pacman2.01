@@ -20,7 +20,7 @@ imgpacman = loadImage('Images/pacman_PNG87.png');
 }
  
 
-var [xpos, ypos, xspeed, yspeed] = [225, 225, 0, 0];
+
 var score;
 
 
@@ -76,25 +76,31 @@ function draw() {
     text('SEE YOU NEXT TIME!', 140, 250)
     songstart.stop();
     soundbye.play();
+    keyPressed();
   }
 
   if (state == 4) {
     background('black')
     songstart.stop();
     drawWorld();
+   
 	  }
 
   if (state == 5) {
     background('black')
     songstart.stop();
     drawWorld();
-    drawGhost();
+    //drawGhost();
+    
+    
 	  }
 
   if (state == 6) {
     background('black')
     songstart.stop();
     drawWorld();
+   // pacman();
+   
 	  }
 }
 
@@ -130,54 +136,7 @@ function mouseClicked() {
   } 
 }
 
-function pacman(){
-    fill('yellow');
-    ellipse(xpos, ypos, 25, 26);
-	  if(xpos >= 0 && xpos + 25 <= 850) xpos += xspeed;
-   	if(ypos >= 0 && ypos + 26 <= 500) ypos += yspeed;
-}
 
-function keyPressed() {
-	switch(keyCode) {
-		case 37:
-		case 65:
-			xspeed = -4;
-			break;
-		case 39:
-		case 68:
-			xspeed = 4;
-			break;
-		case 38:
-		case 87:
-			yspeed = -4;
-			break;
-		case 40:
-		case 83:
-			yspeed = 4;
-			break;
-	}
-}
-
-function keyReleased() {
-	switch(keyCode) {
-		case 37:
-		case 65:
-			xspeed = 0;
-			break;
-		case 39:
-		case 68:
-			xspeed = 0;
-			break;
-		case 38:
-		case 87:
-			yspeed = 0;
-			break;
-		case 40:
-		case 83:
-			yspeed = 0;
-			break;
-	}
-}
 
 var level = [ 
   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -196,11 +155,16 @@ var level = [
   [1,1,2,1,1,2,2,1,2,2,2,2,2,2,1,2,2,1,2,2,2,2,2,2,1,2,2,1,1,2,1,1],
   [1,1,2,2,2,2,1,2,2,1,1,1,2,2,2,2,2,2,2,2,1,1,1,2,2,1,2,2,2,2,1,1],
   [1,1,2,1,1,2,2,1,2,1,2,2,2,1,1,1,1,1,1,2,2,2,1,2,1,2,2,1,1,2,1,1],
-  [1,2,2,1,2,1,2,2,2,1,1,1,1,1,2,2,2,2,1,1,1,1,1,2,2,2,1,2,1,2,2,1],
-  [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,6,2,1],
+  [1,2,2,1,2,1,2,2,2,1,1,1,1,1,2,2,6,2,1,1,1,1,1,2,2,2,1,2,1,2,2,1],
+  [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
   
 ];
+
+var pacman = {
+  x: 16,
+  y: 16 ,
+}
 
 function drawWorld(){  
   for(var y = 0; y < 19 ; y++){    
@@ -244,9 +208,9 @@ function drawWorld(){
 
           }        
           else if(level[y][x] == 6){
-                pacman();
-                
-                
+              drawPacman();
+           
+               
 
           }            
 
@@ -259,10 +223,62 @@ function drawWorld(){
    text(score, 5, height - 5);
   }
 
+function drawPacman(){
+  for(var y = 0; y < 19 ; y++){    
+      for(var x = 0; x < 32; x++){          
+         if (level[y][x] == 6){
+         fill('yellow');
+         ellipse(x * 25 +14 , y * 26 +14, 20, 20);
+      } 
+    
+  }
+}
+}
 
-            
-        
-  
+
+
+
+function keyPressed() {
+  	switch(keyCode) {
+		case 37:
+    case 65:
+      if (level[pacman.y][pacman.x-1] !== 1){
+      level[pacman.y][pacman.x] = 0;
+      pacman.x = pacman.x - 1;
+      level[pacman.y][pacman.x] = 6;
+      drawWorld();
+      }
+			break;
+		case 39:
+    case 68:		
+    if (level[pacman.y][pacman.x+1] !== 1){
+		  level[pacman.y][pacman.x] = 0;
+      pacman.x = pacman.x + 1;
+      level[pacman.y][pacman.x] = 6;
+      drawWorld();
+      }
+			break;
+		case 38:
+    case 87:		
+    if (level[pacman.y-1][pacman.x] !== 1){
+		  level[pacman.y][pacman.x] = 0;
+      pacman.y = pacman.y - 1;
+       level[pacman.y][pacman.x] = 6;
+      drawWorld();
+      } 
+			break;
+		case 40:
+    case 83:		
+    if (level[pacman.y+1][pacman.x] !== 1){
+			level[pacman.y][pacman.x] = 0;
+      pacman.y = pacman.y + 1;
+      level[pacman.y][pacman.x] = 6;
+      drawWorld();
+      }
+			break;
+    	}
+	}
+ 
 
 function drawGhost(){
   fill('blue')
