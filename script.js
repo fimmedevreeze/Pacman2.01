@@ -536,7 +536,7 @@ function ghostMove() {
   }
 
 function getRndInteger(min, max) {
-  return Math.floor(Math.random() * (1) ) + 1;
+  return Math.floor(Math.random() * (5) ) + 1;
 }
 
 
