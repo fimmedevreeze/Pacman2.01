@@ -5,7 +5,6 @@ let left, right, up, down;
 let img;
 let song;
 
-
 function preload(){
 songstart = loadSound('Sounds/game_start.wav');
 soundbye = loadSound('Sounds/game_end.wav');
@@ -18,14 +17,8 @@ createCanvas(800, 529);
 imgpacman = loadImage('Images/pacman_PNG87.png');
 }
  
-
-
-
-
 function draw() {
  
-
-
   if (state == 1){
     background('black');
     rectMode(CENTER);
@@ -81,6 +74,7 @@ function draw() {
     background('black')
     songstart.stop();
     drawWorld();
+    gameEnded();
    
 	  }
 
@@ -88,6 +82,7 @@ function draw() {
     background('black')
     songstart.stop();
     drawWorld();
+    gameEnded();
     //drawGhost();
     
     
@@ -97,7 +92,8 @@ function draw() {
     background('black')
     songstart.stop();
     drawWorld();
-   // pacman();
+    gameEnded();
+   
   }
 
   if (state == 7) {
@@ -165,11 +161,11 @@ var level = [
   [1,1,2,2,2,2,1,2,2,1,1,1,2,2,2,2,2,2,2,2,1,1,1,2,2,1,2,2,2,2,1,1],
   [1,1,2,1,1,2,2,1,2,2,2,2,2,2,1,2,2,1,2,2,2,2,2,2,1,2,2,1,1,2,1,1],
   [1,2,2,1,2,1,2,2,1,1,1,2,1,1,1,2,2,1,1,1,2,1,1,1,2,2,1,2,1,2,2,1],
-  [1,2,2,2,2,2,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,1,2,2,2,2,2,2,2,2,1],
-  [1,1,1,1,1,1,2,1,2,1,0,0,1,1,1,0,0,1,1,1,0,0,1,2,1,2,1,1,1,1,1,1],
-  [0,0,0,0,0,1,2,1,2,1,0,0,1,3,4,5,5,4,3,1,0,0,1,2,1,2,1,0,0,0,0,0],
-  [1,1,1,1,1,1,2,1,2,1,0,0,1,1,1,1,1,1,1,1,0,0,1,2,1,2,1,1,1,1,1,1],
-  [1,2,2,2,2,2,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,1,2,2,2,2,2,2,2,2,1],
+  [1,2,2,2,2,2,2,2,2,1,2,0,0,0,0,2,2,0,0,0,0,2,1,2,2,2,2,2,2,2,2,1],
+  [1,1,1,1,1,1,2,1,2,1,2,0,1,1,1,2,2,1,1,1,0,2,1,2,1,2,1,1,1,1,1,1],
+  [0,0,0,0,0,1,2,1,2,1,2,0,1,3,4,5,5,4,3,1,0,2,1,2,1,2,1,0,0,0,0,0],
+  [1,1,1,1,1,1,2,1,2,1,2,0,1,1,1,1,1,1,1,1,0,2,1,2,1,2,1,1,1,1,1,1],
+  [1,2,2,2,2,2,2,2,2,1,2,0,0,0,0,0,0,0,0,0,0,2,1,2,2,2,2,2,2,2,2,1],
   [1,2,2,1,2,1,2,2,1,1,1,2,1,1,1,2,2,1,1,1,2,1,1,1,2,2,1,2,1,2,2,1],
   [1,1,2,1,1,2,2,1,2,2,2,2,2,2,1,2,2,1,2,2,2,2,2,2,1,2,2,1,1,2,1,1],
   [1,1,2,2,2,2,1,2,2,1,1,1,2,2,2,2,2,2,2,2,1,1,1,2,2,1,2,2,2,2,1,1],
@@ -180,12 +176,7 @@ var level = [
   
 ];
 
-var pacman = {
-  x: 16,
-  y: 16 ,
-}
 
-var score = 0;
 
 function drawWorld(){  
   for(var y = 0; y < 19 ; y++){    
@@ -237,12 +228,42 @@ function drawWorld(){
 
           }   
      }
+   drawScore();
+   drawLives();
+   levelNumber();
+  }
+var pacman = {
+  x: 16,
+  y: 16 ,
+}
+
+var score = 0;
+
+
+function drawScore(){
    noStroke();
    fill(255);
    textSize(30);
    textAlign(LEFT);
    text(score, 5, height - 5);
-  }
+
+}
+function drawLives(){
+   noStroke();
+   fill(255);
+   textSize(30);
+   textAlign(left);
+   text(3, 775, height - 5);
+
+}
+function levelNumber(){
+   noStroke();
+   fill(255);
+   textSize(30);
+   textAlign(LEFT);
+   text('Level' , 370, height - 5);
+
+}
 
 function drawPacman(){
   for(var y = 0; y < 19 ; y++){    
@@ -265,7 +286,7 @@ function keyPressed() {
     case 65:
       if (level[pacman.y][pacman.x-1] !== 1){
         if (level[pacman.y][pacman.x-1] === 2) {
-         score = score + 10;
+         score = score + 5;
         }
       level[pacman.y][pacman.x] = 0;
       pacman.x = pacman.x - 1;
@@ -277,7 +298,7 @@ function keyPressed() {
     case 68:		
     if (level[pacman.y][pacman.x+1] !== 1){
       if (level[pacman.y][pacman.x+1] === 2) {
-         score = score + 10;
+         score = score + 5;
         }
 		  level[pacman.y][pacman.x] = 0;
       pacman.x = pacman.x + 1;
@@ -289,7 +310,7 @@ function keyPressed() {
     case 87:		
     if (level[pacman.y-1][pacman.x] !== 1){
       if (level[pacman.y-1][pacman.x] === 2) {
-         score = score + 10;
+         score = score + 5;
         }
 		  level[pacman.y][pacman.x] = 0;
       pacman.y = pacman.y - 1;
@@ -301,7 +322,7 @@ function keyPressed() {
     case 83:		
     if (level[pacman.y+1][pacman.x] !== 1){
       if (level[pacman.y+1][pacman.x-1] === 2) {
-         score = score + 10;
+         score = score + 5;
         }
 			level[pacman.y][pacman.x] = 0;
       pacman.y = pacman.y + 1;
@@ -312,6 +333,14 @@ function keyPressed() {
     	}
 	}
  
+
+function gameEnded(){
+  if (score === 100){
+     state = 7;
+    
+  }
+    
+}
 
 function drawGhost(){
   fill('blue')
