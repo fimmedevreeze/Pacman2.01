@@ -20,9 +20,11 @@ body {
   display: inline-grid;
 }
 
-.p5Canvas{
+canvas{
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+  margin-top: 13%;
+  border:1px solid yellow;
 }
