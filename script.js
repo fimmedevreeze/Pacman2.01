@@ -292,6 +292,15 @@ function keyPressed() {
          score = score + 5;
          soundeat.play();
         }
+        else if (level[pacman.y][pacman.x-1] === 3) { 
+         lives = lives - 1;
+        }
+         else if (level[pacman.y][pacman.x-1] === 4) { 
+         lives = lives - 1;
+        }
+         else if (level[pacman.y][pacman.x-1] === 5) { 
+         lives = lives - 1;
+        }
       level[pacman.y][pacman.x] = 0;
       pacman.x = pacman.x - 1;
       level[pacman.y][pacman.x] = 6;
@@ -305,6 +314,15 @@ function keyPressed() {
          score = score + 5;
          soundeat.play();
         }
+      else if (level[pacman.y][pacman.x+1] === 3) { 
+         lives = lives - 1;
+        }  
+        else if (level[pacman.y][pacman.x+1] === 4) { 
+         lives = lives - 1;
+        }  
+        else if (level[pacman.y][pacman.x+1] === 5) { 
+         lives = lives - 1;
+        }  
 		  level[pacman.y][pacman.x] = 0;
       pacman.x = pacman.x + 1;
       level[pacman.y][pacman.x] = 6;
@@ -318,6 +336,15 @@ function keyPressed() {
          score = score + 5;
          soundeat.play();
         }
+        else if (level[pacman.y-1][pacman.x] === 3) { 
+         lives = lives - 1;
+        }
+        else if (level[pacman.y-1][pacman.x] === 4) { 
+         lives = lives - 1;
+        }
+        else if (level[pacman.y-1][pacman.x] === 5) { 
+         lives = lives - 1;
+        }
 		  level[pacman.y][pacman.x] = 0;
       pacman.y = pacman.y - 1;
        level[pacman.y][pacman.x] = 6;
@@ -327,15 +354,25 @@ function keyPressed() {
 		case 40:
     case 83:		
     if (level[pacman.y+1][pacman.x] !== 1){
-      if (level[pacman.y+1][pacman.x-1] === 2) {
+      if (level[pacman.y+1][pacman.x] === 2) {
          score = score + 5;
          soundeat.play();
+        }
+         else if (level[pacman.y+1][pacman.x] === 3) { 
+         lives = lives - 1;
+        }
+        else if (level[pacman.y+1][pacman.x] === 4) { 
+         lives = lives - 1;
+        }
+        else if (level[pacman.y+1][pacman.x] === 5) { 
+         lives = lives - 1;
         }
 			level[pacman.y][pacman.x] = 0;
       pacman.y = pacman.y + 1;
       level[pacman.y][pacman.x] = 6;
       drawWorld();
       }
+      
 			break;
     	}
 	}
