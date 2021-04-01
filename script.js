@@ -12,7 +12,7 @@ soundclick = loadSound('Sounds/credit.wav');
 soundeat = loadSound('Sounds/eat_fruit.wav');
 sounddeath = loadSound('Sounds/death_2.wav');
 soundgameover = loadSound('Sounds/death_1.wav');
-wall = loadImage("Images/maartenslogo.png")
+wall = loadImage("Images/maartenslogoo.png")
 }
 
 function setup() {
