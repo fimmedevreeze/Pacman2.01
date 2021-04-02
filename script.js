@@ -277,6 +277,7 @@ var score = 0;
 var lives = 3;
 var levelnumber;
 
+
 function drawScore(){
    noStroke();
    fill(255);
@@ -286,12 +287,16 @@ function drawScore(){
 
 }
 
+function saveScore(){
+  localStorage.setItem("highscore", score);
+}
+
 function drawHighscore(){
    noStroke();
    fill(255);
    textSize(30);
    textAlign(LEFT);
-   text("Highscore", 200, height - 5);
+   text("Highscore" + " " + localStorage.getItem("highscore"), 200, height - 5);
 }
 
 function drawLives(){
