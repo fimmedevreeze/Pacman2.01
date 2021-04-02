@@ -111,23 +111,22 @@ function draw() {
    
     ghostMove();
     ghost2Move();
-
   }
 
-  if (state == 7) {
-    songstart.stop();
-    background('black');
-    rectMode(CENTER);
-    fill('yellow');
-    rect(400, 50, 500, 50, 20);
-    fill('yellow');
-    rect(250, 350, 200, 75, 20);
-    textSize(50);
-    fill(0);
-    text('EINDE SPEL', 296, 68);
-    text('EXIT', 200, 365);
-    image(imgpacman, 450, 150, 250, 250)
-  }
+  // if (state == 7) {
+  //   songstart.stop();
+  //   background('black');
+  //   rectMode(CENTER);
+  //   fill('yellow');
+  //   rect(400, 50, 500, 50, 20);
+  //   fill('yellow');
+  //   rect(250, 350, 200, 75, 20);
+  //   textSize(50);
+  //   fill(0);
+  //   text('EINDE SPEL', 296, 68);
+  //   text('EXIT', 200, 365);
+  //   image(imgpacman, 450, 150, 250, 250)
+  // }
 
   if (state == 8) {
     songstart.stop();
@@ -154,12 +153,12 @@ function mouseClicked() {
      
       
     }
-  }
 
-     if (mouseX <= 350 && mouseX >= 150 && mouseY <= 385 && mouseY >= 310) {
+     else if (mouseX <= 350 && mouseX >= 150 && mouseY <= 385 && mouseY >= 310) {
       soundclick.play();
       state = 3
       noLoop()
+     }
       
     }
   else if (state == 2) {
@@ -176,10 +175,10 @@ function mouseClicked() {
       state = 6
     }
   } 
-  else if (state == 7) {
+  else if (state == 8) {
      if (mouseX <= 350 && mouseX >= 150 && mouseY <= 385 && mouseY >= 310) {
       soundclick.play();
-      state = 3      
+      state = 2     
   }
  
 }
