@@ -4,6 +4,8 @@ let circleY = 200
 let left, right, up, down;
 let img;
 let song;
+const highScoreBoard = document.querySelector('.highScore');
+
 
 function preload(){
 songstart = loadSound('Sounds/game_start.wav');
@@ -144,6 +146,7 @@ function draw() {
     text('GAME OVER', 296, 68);
     text('EXIT', 200, 365);
     image(imgpacman, 450, 150, 250, 250)
+    drawHighscore();
   }
    
 }
@@ -275,12 +278,12 @@ var pacman = {
 
 
 
-var score = 0;
+let score = 0;
 var lives = 3;
 var levelnumber;
-
-const highScoreBoard = document.querySelector('.highscore');
 let highscore = localStorage.getItem('game1HighScore') || 0;
+// highScoreBoard.textContent = 'HIGHSCORE: ' + highScore;
+
 
 function drawScore(){
    noStroke();
