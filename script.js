@@ -80,7 +80,7 @@ function draw() {
     levelnumber = 1;
    
     ghostMove();
-    // ghost2Move();
+    ghost2Move();
 
 	  }
 
@@ -94,7 +94,7 @@ function draw() {
     levelnumber = 2;
     
     ghostMove();
-    // ghost2Move();
+    ghost2Move();
 
 
     
@@ -110,7 +110,7 @@ function draw() {
     levelnumber = 3;
    
     ghostMove();
-    // ghost2Move();
+    ghost2Move();
 
   }
 
@@ -561,76 +561,103 @@ function ghostMove() {
       }
   }
 
-// function ghost2Move() {
-//   switch (getRndInteger2()) {
-//     case 1:
-//       if (level[ghost.y][ghost.x-1] !== 1){
-//         if (level[ghost.y][ghost.x-1] === 2) {
-//          level[ghost.y][ghost.x] = 2;
-//          ghost.x = ghost.x - 1;
-//          level[ghost.y][ghost.x] = 4;
-//         }
-//         else if (level[ghost.y][ghost.x-1] === 0) { 
-//          level[ghost.y][ghost.x] = 0;
-//          ghost.x = ghost.x - 1;
-//          level[ghost.y][ghost.x] = 4;
-//         }
-//        drawWorld();
-//       }
-//       break;
-//     case 2: 
-//     if (level[ghost.y][ghost.x+1] !== 1){
-//       if (level[ghost.y][ghost.x+1] === 2) {         
-//          level[ghost.y][ghost.x] = 2;
-//          ghost.x = ghost.x + 1;
-//          level[ghost.y][ghost.x] = 4;
-//         }
-//         else if (level[ghost.y][ghost.x+1] === 0) { 
-//          level[ghost.y][ghost.x] = 0;
-//          ghost.x = ghost.x + 1;
-//          level[ghost.y][ghost.x] = 4;
-//         }   
-//        drawWorld();
-//       }
-//       break;
-//     case 3:     
-//     if (level[ghost.y-1][ghost.x] !== 1){
-//       if (level[ghost.y-1][ghost.x] === 2) {   
-//         level[ghost.y][ghost.x] = 2;    
-//         ghost.y = ghost.y - 1;
-//         level[ghost.y][ghost.x] = 4;
-//         }
-//         else if (level[ghost.y-1][ghost.x] === 0) { 
-//         ghost.y = ghost.y - 1;
-//         level[ghost.y][ghost.x] = 4;
-//         }
-//        drawWorld();
-//       } 
-//       break;
-//     case 4:
-//     if (level[ghost.y+1][ghost.x] !== 1){
-//       if (level[ghost.y+1][ghost.x] === 2) { 
-//         level[ghost.y][ghost.x] = 2;      
-//         ghost.y = ghost.y + 1;
-//         level[ghost.y][ghost.x] = 4;
-//         }
-//         else if (level[ghost.y+1][ghost.x] === 0) { 
-//         ghost.y = ghost.y + 1;
-//        level[ghost.y][ghost.x] = 4;
-//         }
-//         drawWorld();
-//       }
-//       break;
-//       }
-//   }
+var ghost2 ={
+  x: 14,
+  y:  7,
+}
+
+function ghost2Move() {
+  switch (getRndInteger2()) {
+    case 1:
+      if (level[ghost.y][ghost.x-1] !== 1){
+        if (level[ghost.y][ghost.x-1] === 2) {
+         level[ghost.y][ghost.x] = 2;
+         ghost.x = ghost.x - 1;
+         level[ghost.y][ghost.x] = 4;
+        }
+        else if (level[ghost.y][ghost.x-1] === 0) { 
+         level[ghost.y][ghost.x] = 0;
+         ghost.x = ghost.x - 1;
+         level[ghost.y][ghost.x] = 4;
+        }
+        else if (level[ghost.y][ghost.x-1] === 6) { 
+         lives = lives - 1;
+         sounddeath.play();
+        ghost.x = ghost.x
+        }
+       drawWorld();
+      }
+      break;
+    case 2: 
+    if (level[ghost.y][ghost.x+1] !== 1){
+      if (level[ghost.y][ghost.x+1] === 2) {         
+         level[ghost.y][ghost.x] = 2;
+         ghost.x = ghost.x + 1;
+         level[ghost.y][ghost.x] = 4;
+        }
+        else if (level[ghost.y][ghost.x+1] === 0) { 
+         level[ghost.y][ghost.x] = 0;
+         ghost.x = ghost.x + 1;
+         level[ghost.y][ghost.x] = 4;
+        }   
+        else if (level[ghost.y][ghost.x+1] === 6) { 
+         lives = lives - 1;
+         sounddeath.play();
+        ghost.x = ghost.x
+        }
+       drawWorld();
+      }
+      break;
+    case 3:     
+    if (level[ghost.y-1][ghost.x] !== 1){
+      if (level[ghost.y-1][ghost.x] === 2) {   
+        level[ghost.y][ghost.x] = 2;    
+        ghost.y = ghost.y - 1;
+        level[ghost.y][ghost.x] = 4;
+        }
+        else if (level[ghost.y-1][ghost.x] === 0) { 
+        level[ghost.y][ghost.x] = 0;
+        ghost.y = ghost.y - 1;
+        level[ghost.y][ghost.x] = 4;
+        }
+        else if (level[ghost.y-1][ghost.x] === 6) { 
+         lives = lives - 1;
+         sounddeath.play();
+        ghost.y = ghost.y
+       }
+       drawWorld();
+      } 
+      break;
+    case 4:
+    if (level[ghost.y+1][ghost.x] !== 1){
+      if (level[ghost.y+1][ghost.x] === 2) { 
+        level[ghost.y][ghost.x] = 2;      
+        ghost.y = ghost.y + 1;
+        level[ghost.y][ghost.x] = 4;
+        }
+        else if (level[ghost.y+1][ghost.x] === 0) { 
+        level[ghost.y][ghost.x] = 0;
+        ghost.y = ghost.y + 1;
+        level[ghost.y][ghost.x] = 4;
+        }
+        else if (level[ghost.y+1][ghost.x] === 6) { 
+         lives = lives - 1;
+         sounddeath.play();
+        ghost.y = ghost.y
+       }
+        drawWorld();
+      }
+      break;
+      }
+  }
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (5) ) + 1;
 }
 
-// function getRndInteger2(min, max) {
-//   return Math.floor(Math.random() * (20) ) + 10;
-// }
+function getRndInteger2(min, max) {
+  return Math.floor(Math.random() * (10) ) + 5;
+}
 
 
 //de functie ghostMove(); vervolgens aanroepen in state 456
