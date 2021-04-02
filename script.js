@@ -56,7 +56,7 @@ function draw() {
     fill('yellow');
     rect(400, 380, 200, 75, 20);
     fill('black')
-    text('Level 3', 325, 397)
+    text('ARCADE', 325, 397)
     songstart.stop();
     if (mouseButton == RIGHT) {
       state = 1
@@ -110,12 +110,11 @@ function draw() {
       songstart.loop();
     }
     drawWorld();
-    gameEnded();
-    levelnumber = 3;
-   
-    ghostMove();
-    ghost2Move();
-    ghost3Move();
+    gameEndedarcade();
+    levelnumber = "ARCADE";
+    ghostMovearcade();
+     ghost2Movearcade();
+      ghost3Movearcade();
   }
 
   // if (state == 7) {
@@ -238,22 +237,17 @@ function drawWorld(){
           }
           else if(level[y][x] == 3){
                
-                fill('blue')
-                ellipse(x * 25 +14 , y * 26 +14 , 20, 20);
-
+                drawGhost1();
           }        
           else if(level[y][x] == 4){
                
-                fill('orange')
-                ellipse(x * 25 +14 , y * 26 +14 , 20, 20);
-
+                 drawGhost2();
 
           }        
 
           else if(level[y][x] == 5){
-               
-                fill('red')
-                ellipse(x * 25 +14 , y * 26 +14 , 20, 20);
+                    
+                 drawGhost3();
 
           }        
           else if(level[y][x] == 6){
@@ -282,7 +276,7 @@ let score = 0;
 var lives = 3;
 var levelnumber;
 let highscore = localStorage.getItem('game1HighScore') || 0;
-// highScoreBoard.textContent = 'HIGHSCORE: ' + highScore;
+ //highScoreBoard.textContent = 'HIGHSCORE: ' + highScore;
 
 
 function drawScore(){
@@ -526,6 +520,13 @@ function gameEnded(){
   
  }
  else if (lives === 0){
+   state = 8;
+   soundgameover.play();
+ }
+}
+function gameEndedarcade(){
+ 
+  if (lives === 0){
    state = 8;
    soundgameover.play();
  }
@@ -815,3 +816,256 @@ function getRndInteger3(min, max) {
  
 //de functie ghostMove(); vervolgens aanroepen in state 456
 
+function ghostMovearcade() {
+ switch (getRndInteger()) {
+   case 1:
+     if (level[ghost.y][ghost.x-1] !== 1){
+       if (level[ghost.y][ghost.x-1] === 2) {
+        level[ghost.y][ghost.x] = 2;
+        ghost.x = ghost.x - 1;
+        level[ghost.y][ghost.x] = 3;
+       }
+       else if (level[ghost.y][ghost.x-1] === 0) {
+        level[ghost.y][ghost.x] = 2;
+        ghost.x = ghost.x - 1;
+        level[ghost.y][ghost.x] = 3;
+       }
+       else if (level[ghost.y][ghost.x-1] === 6) {
+        lives = lives - 1;
+        sounddeath.play();
+       ghost.x = ghost.x
+       }
+      drawWorld();
+     }
+     break;
+   case 2:
+   if (level[ghost.y][ghost.x+1] !== 1){
+     if (level[ghost.y][ghost.x+1] === 2) {        
+        level[ghost.y][ghost.x] = 2;
+        ghost.x = ghost.x + 1;
+        level[ghost.y][ghost.x] = 3;
+       }
+       else if (level[ghost.y][ghost.x+1] === 0) {
+        level[ghost.y][ghost.x] = 2;
+        ghost.x = ghost.x + 1;
+        level[ghost.y][ghost.x] = 3;
+       }  
+       else if (level[ghost.y][ghost.x+1] === 6) {
+        lives = lives - 1;
+        sounddeath.play();
+       ghost.x = ghost.x
+       }
+      drawWorld();
+     }
+     break;
+   case 3:    
+   if (level[ghost.y-1][ghost.x] !== 1){
+     if (level[ghost.y-1][ghost.x] === 2) {  
+       level[ghost.y][ghost.x] = 2;   
+       ghost.y = ghost.y - 1;
+       level[ghost.y][ghost.x] = 3;
+       }
+       else if (level[ghost.y-1][ghost.x] === 0) {
+       level[ghost.y][ghost.x] = 2;
+       ghost.y = ghost.y - 1;
+       level[ghost.y][ghost.x] = 3;
+       }
+       else if (level[ghost.y-1][ghost.x] === 6) {
+        lives = lives - 1;
+        sounddeath.play();
+       ghost.y = ghost.y
+      }
+      drawWorld();
+     }
+     break;
+   case 4:
+   if (level[ghost.y+1][ghost.x] !== 1){
+     if (level[ghost.y+1][ghost.x] === 2) {
+       level[ghost.y][ghost.x] = 2;     
+       ghost.y = ghost.y + 1;
+       level[ghost.y][ghost.x] = 3;
+       }
+       else if (level[ghost.y+1][ghost.x] === 0) {
+       level[ghost.y][ghost.x] = 2;
+       ghost.y = ghost.y + 1;
+       level[ghost.y][ghost.x] = 3;
+       }
+       else if (level[ghost.y+1][ghost.x] === 6) {
+        lives = lives - 1;
+        sounddeath.play();
+       ghost.y = ghost.y
+      }
+       drawWorld();
+     }
+     break;
+     }
+ }
+ function ghost2Movearcade() {
+ switch (getRndInteger2()) {
+   case 5:
+     if (level[ghost2.y][ghost2.x-1] !== 1){
+       if (level[ghost2.y][ghost2.x-1] === 2) {
+        level[ghost2.y][ghost2.x] = 2;
+        ghost2.x = ghost2.x - 1;
+        level[ghost2.y][ghost2.x] = 4;
+       }
+       else if (level[ghost2.y][ghost2.x-1] === 0) {
+        level[ghost2.y][ghost2.x] = 2;
+        ghost2.x = ghost2.x - 1;
+        level[ghost2.y][ghost2.x] = 4;
+       }
+       else if (level[ghost2.y][ghost2.x-1] === 6) {
+        lives = lives - 1;
+        sounddeath.play();
+       ghost2.x = ghost2.x
+       }
+      drawWorld();
+     }
+     break;
+   case 6:
+   if (level[ghost2.y][ghost2.x+1] !== 1){
+     if (level[ghost2.y][ghost2.x+1] === 2) {        
+        level[ghost2.y][ghost2.x] = 2;
+        ghost2.x = ghost2.x + 1;
+        level[ghost2.y][ghost2.x] = 4;
+       }
+       else if (level[ghost2.y][ghost2.x+1] === 0) {
+        level[ghost2.y][ghost2.x] = 2;
+        ghost2.x = ghost2.x + 1;
+        level[ghost2.y][ghost2.x] = 4;
+       }  
+       else if (level[ghost2.y][ghost2.x+1] === 6) {
+        lives = lives - 1;
+        sounddeath.play();
+       ghost2.x = ghost2.x
+       }
+      drawWorld();
+     }
+     break;
+   case 7:    
+   if (level[ghost2.y-1][ghost2.x] !== 1){
+     if (level[ghost2.y-1][ghost2.x] === 2) {  
+       level[ghost2.y][ghost2.x] = 2;   
+       ghost2.y = ghost2.y - 1;
+       level[ghost2.y][ghost2.x] = 4;
+       }
+       else if (level[ghost2.y-1][ghost2.x] === 0) {
+       level[ghost2.y][ghost2.x] = 2;
+       ghost2.y = ghost2.y - 1;
+       level[ghost2.y][ghost2.x] = 4;
+       }
+       else if (level[ghost2.y-1][ghost2.x] === 6) {
+        lives = lives - 1;
+        sounddeath.play();
+       ghost2.y = ghost2.y
+      }
+      drawWorld();
+     }
+     break;
+   case 8:
+   if (level[ghost2.y+1][ghost2.x] !== 1){
+     if (level[ghost2.y+1][ghost2.x] === 2) {
+       level[ghost2.y][ghost2.x] = 2;     
+       ghost2.y = ghost2.y + 1;
+       level[ghost2.y][ghost2.x] = 4;
+       }
+       else if (level[ghost2.y+1][ghost2.x] === 0) {
+       level[ghost2.y][ghost2.x] = 2;
+       ghost2.y = ghost2.y + 1;
+       level[ghost2.y][ghost2.x] = 4;
+       }
+       else if (level[ghost2.y+1][ghost2.x] === 6) {
+        lives = lives - 1;
+        sounddeath.play();
+       ghost2.y = ghost2.y
+      }
+       drawWorld();
+     }
+     break;
+     }
+ }
+ 
+function ghost3Movearcade() {
+ switch (getRndInteger3()) {
+   case 10:
+     if (level[ghost3.y][ghost3.x-1] !== 1){
+       if (level[ghost3.y][ghost3.x-1] === 2) {
+        level[ghost3.y][ghost3.x] = 2;
+        ghost3.x = ghost3.x - 1;
+        level[ghost3.y][ghost3.x] = 5;
+       }
+       else if (level[ghost3.y][ghost3.x-1] === 0) {
+        level[ghost3.y][ghost3.x] = 2;
+        ghost3.x = ghost3.x - 1;
+        level[ghost3.y][ghost3.x] = 5;
+       }
+       else if (level[ghost3.y][ghost3.x-1] === 6) {
+        lives = lives - 1;
+        sounddeath.play();
+       ghost3.x = ghost3.x
+       }
+      drawWorld();
+     }
+     break;
+   case 11:
+   if (level[ghost3.y][ghost3.x+1] !== 1){
+     if (level[ghost3.y][ghost3.x+1] === 2) {        
+        level[ghost3.y][ghost3.x] = 2;
+        ghost3.x = ghost3.x + 1;
+        level[ghost3.y][ghost3.x] = 5;
+       }
+       else if (level[ghost3.y][ghost3.x+1] === 0) {
+        level[ghost3.y][ghost3.x] = 2;
+        ghost3.x = ghost3.x + 1;
+        level[ghost3.y][ghost3.x] = 5;
+       }  
+       else if (level[ghost3.y][ghost3.x+1] === 6) {
+        lives = lives - 1;
+        sounddeath.play();
+       ghost3.x = ghost3.x
+       }
+      drawWorld();
+     }
+     break;
+   case 12:    
+   if (level[ghost3.y-1][ghost3.x] !== 1){
+     if (level[ghost3.y-1][ghost3.x] === 2) {  
+       level[ghost3.y][ghost3.x] = 2;   
+       ghost3.y = ghost3.y - 1;
+       level[ghost3.y][ghost3.x] = 5;
+       }
+       else if (level[ghost3.y-1][ghost3.x] === 0) {
+       level[ghost3.y][ghost3.x] = 2;
+       ghost3.y = ghost3.y - 1;
+       level[ghost3.y][ghost3.x] = 5;
+       }
+       else if (level[ghost3.y-1][ghost3.x] === 6) {
+        lives = lives - 1;
+        sounddeath.play();
+       ghost3.y = ghost3.y
+      }
+      drawWorld();
+     }
+     break;
+   case 13:
+   if (level[ghost3.y+1][ghost3.x] !== 1){
+     if (level[ghost3.y+1][ghost3.x] === 2) {
+       level[ghost3.y][ghost3.x] = 2;     
+       ghost3.y = ghost3.y + 1;
+       level[ghost3.y][ghost3.x] = 5;
+       }
+       else if (level[ghost3.y+1][ghost3.x] === 0) {
+       level[ghost3.y][ghost3.x] = 2;
+       ghost3.y = ghost3.y + 1;
+       level[ghost3.y][ghost3.x] = 5;
+       }
+       else if (level[ghost3.y+1][ghost3.x] === 6) {
+        lives = lives - 1;
+        sounddeath.play();
+       ghost3.y = ghost3.y
+      }
+       drawWorld();
+     }
+     break;
+     }
+ }
