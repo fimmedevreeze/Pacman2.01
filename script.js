@@ -279,6 +279,8 @@ var score = 0;
 var lives = 3;
 var levelnumber;
 
+const highScoreBoard = document.querySelector('.highscore');
+let highscore = localStorage.getItem('game1HighScore') || 0;
 
 function drawScore(){
    noStroke();
@@ -289,16 +291,19 @@ function drawScore(){
 
 }
 
-function saveScore(){
-  localStorage.setItem("highscore", score);
-}
-
 function drawHighscore(){
    noStroke();
    fill(255);
    textSize(30);
    textAlign(LEFT);
-   text("Highscore" + " " + localStorage.getItem("highscore"), 200, height - 5);
+   text("Highscore" + " " + highscore, 200, height - 5);
+}
+
+function checkHighScore(){
+  if (score > localStorage.getItem()){
+    localStorage.setItem('game1HighScore', score);
+    highscore = score;
+  }
 }
 
 function drawLives(){
