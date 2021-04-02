@@ -490,7 +490,7 @@ function ghostMove() {
          ghost.x = ghost.x - 1;
          level[ghost.y][ghost.x] = 3;
         }
-        else if (level[pacman.y][pacman.x-1] === 6) { 
+        else if (level[ghost.y][ghost.x-1] === 6) { 
          lives = lives - 1;
          sounddeath.play();
         ghost.x = ghost.x
@@ -510,7 +510,7 @@ function ghostMove() {
          ghost.x = ghost.x + 1;
          level[ghost.y][ghost.x] = 3;
         }   
-        else if (level[pacman.y][pacman.x+1] === 6) { 
+        else if (level[ghost.y][ghost.x+1] === 6) { 
          lives = lives - 1;
          sounddeath.play();
         ghost.x = ghost.x
@@ -530,7 +530,7 @@ function ghostMove() {
         ghost.y = ghost.y - 1;
         level[ghost.y][ghost.x] = 3;
         }
-        else if (level[pacman.y-1][pacman.x] === 6) { 
+        else if (level[ghost.y-1][ghost.x] === 6) { 
          lives = lives - 1;
          sounddeath.play();
         ghost.y = ghost.y
@@ -550,7 +550,7 @@ function ghostMove() {
         ghost.y = ghost.y + 1;
         level[ghost.y][ghost.x] = 3;
         }
-        else if (level[pacman.y+1][pacman.x] === 6) { 
+        else if (level[ghost.y+1][ghost.x] === 6) { 
          lives = lives - 1;
          sounddeath.play();
         ghost.y = ghost.y
