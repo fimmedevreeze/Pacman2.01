@@ -261,6 +261,7 @@ function drawWorld(){
           }   
      }
    drawScore();
+   drawHighscore();
    drawLives();
    levelNumber();
   }
@@ -284,6 +285,15 @@ function drawScore(){
    text("Score" + " " + score, 5, height - 5);
 
 }
+
+function drawHighscore(){
+   noStroke();
+   fill(255);
+   textSize(30);
+   textAlign(LEFT);
+   text("Highscore", 200, height - 5);
+}
+
 function drawLives(){
    noStroke();
    fill(255);
@@ -297,7 +307,7 @@ function levelNumber(){
    fill(255);
    textSize(30);
    textAlign(LEFT);
-   text("Level" + " " + levelnumber , 355, height - 5);
+   text("Level" + " " + levelnumber , 500, height - 5);
 
 }
 
