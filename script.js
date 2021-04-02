@@ -288,20 +288,33 @@ function drawScore(){
 
 }
 
-function drawHighscore(){
-   noStroke();
-   fill(255);
-   textSize(30);
-   textAlign(LEFT);
-   text("Highscore" + " " + highscore, 200, height - 5);
-}
-
 function checkHighScore(){
   if (score > localStorage.getItem()){
     localStorage.setItem('game1HighScore', score);
     highscore = score;
   }
 }
+
+function drawHighscore(){
+  if (score > highscore) {
+   localStorage.setItem('game1HighScore', score);
+   highscore = score
+   text("Highscore" + " " + highscore, 200, height - 5);
+   noStroke();
+   fill(255);
+   textSize(30);
+   textAlign(LEFT);
+    }
+  else {
+   highscore = localStorage.getItem("game1HighScore")
+   text("Highscore" + " " + highscore, 200, height - 5);
+   noStroke();
+   fill(255);
+   textSize(30);
+   textAlign(LEFT);
+    }
+}
+
 
 function drawLives(){
    noStroke();

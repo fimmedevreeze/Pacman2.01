@@ -4,7 +4,7 @@
   const highScoreBoard = document.querySelector('.highScore');
   let score = 0;
   let highscore = localStorage.getItem('game1HighScore') || 0;
-  highScoreBoard.textContent = 'HIGHSCORE: ' + highScore;
+  highScoreBoard.textContent = 'HIGHSCORE: ' + highscore;
 
   function checkHighScore(){
    if (score > localStorage.getItem()){
