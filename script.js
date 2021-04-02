@@ -15,11 +15,16 @@ soundeat = loadSound('Sounds/eat_fruit.wav');
 sounddeath = loadSound('Sounds/death_2.wav');
 soundgameover = loadSound('Sounds/death_1.wav');
 wall = loadImage("Images/maartenslogoo.png")
+pacmanright = loadImage("Images/pacmanright.png")
+pacmanleft = loadImage("Images/pacmanleft.png")
+pacmanup = loadImage("Images/pacmanup.png")
+pacmandown = loadImage("Images/pacmandown.png")
+imgpacman = loadImage('Images/pacman_PNG87.png');
 }
 
 function setup() {
 createCanvas(800, 529);
-imgpacman = loadImage('Images/pacman_PNG87.png');
+
 }
  
 function draw() {
@@ -334,16 +339,36 @@ function levelNumber(){
 }
 
 function drawPacman(){
- for(var y = 0; y < 19 ; y++){   
-     for(var x = 0; x < 32; x++){         
-        if (level[y][x] == 6){
-        fill('yellow');
-        ellipse(x * 25 +14 , y * 26 +14, 20, 20);
+ switch(keyCode){
+   case 37:
+   case 65:
+   image(pacmanleft, pacman.x * 25 +5 , pacman.y * 26 +5 , 20, 20);
+   break;
+    case 39:
+   case 68:
+      image(pacmanright, pacman.x * 25 +5 , pacman.y * 26 +5 , 20, 20);
+
+   break;
+    case 38:
+   case 87:
+       image(pacmanup, pacman.x * 25 +5 , pacman.y * 26 +5 , 20, 20);
+
+   break;
+    case 40:
+   case 83:
+      image(pacmandown, pacman.x * 25 +5 , pacman.y * 26 +5 , 20, 20);
+
+   break;
+   default:
+        image(pacmanright, pacman.x * 25 +5 , pacman.y * 26 +5 , 20, 20);
+   break;
+
+ }
      }
   
- }
-}
-}
+ 
+
+
  
 function drawGhost1(){
  for(var y = 0; y < 19 ; y++){   
