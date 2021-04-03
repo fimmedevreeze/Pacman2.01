@@ -30,15 +30,3 @@ canvas{
   border-image: linear-gradient(0deg, black, yellow) 1;
   animation: gradient 10s ease infinite;
 }
-
-.highScore{
-position: absolute;
-top: 10px;
-left: 10px;
-font-size: 22px;
-font-weight: 900px;
-text-shadow: 5px 5px 10px rgba(0,0,0,0.2);
-background-color: rgba(255,255,255,0.3);
-padding: 10px;
-border-radius: 5px;
-}

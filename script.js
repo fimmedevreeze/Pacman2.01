@@ -4,8 +4,6 @@ let circleY = 200
 let left, right, up, down;
 let img;
 let song;
-const highScoreBoard = document.querySelector('.highScore');
-
 
 function preload(){
 songstart = loadSound('Sounds/game_start.wav');
@@ -293,8 +291,6 @@ let score = 0;
 var lives = 3;
 var levelnumber;
 let highscore = localStorage.getItem('game1HighScore') || 0;
- //highScoreBoard.textContent = 'HIGHSCORE: ' + highScore;
-
 
 function drawScore(){
    noStroke();
@@ -303,13 +299,6 @@ function drawScore(){
    textAlign(LEFT);
    text("Score" + " " + score, 5, height - 5);
 
-}
-
-function checkHighScore(){
-  if (score > localStorage.getItem()){
-    localStorage.setItem('game1HighScore', score);
-    highscore = score;
-  }
 }
 
 function drawHighscore(){
