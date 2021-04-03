@@ -112,6 +112,9 @@ function draw() {
     text('SEE YOU NEXT TIME!', 250, 250)
     songstart.stop();
     soundbye.play();
+    if (mouseButton == RIGHT) {
+      state = 1
+    }
   }
 
   if (state == 4) {
@@ -127,6 +130,7 @@ function draw() {
     ghostMove(ghost);
     ghostMove(ghost2);
     ghostMove(ghost3);
+ 
 
 	  }
 
@@ -145,6 +149,7 @@ function draw() {
     ghostMove(ghost4);
     ghostMove(ghost5);
     ghostMove(ghost6);
+  
 
 
 
@@ -163,6 +168,7 @@ function draw() {
     ghost2Movearcade();
     ghost3Movearcade();
     drawHighscore();
+     
   }
 
   if (state == 7) {
@@ -178,6 +184,8 @@ function draw() {
     text('EINDE SPEL', 296, 68);
     text('EXIT', 200, 365);
     image(imgpacman, 450, 150, 250, 250)
+    drawScore;
+      
   }
 
   if (state == 8) {
@@ -195,6 +203,7 @@ function draw() {
     image(imgpacman, 450, 150, 250, 250)
     drawScore();
     drawHighscore();
+     
   }
    
 }
@@ -211,7 +220,7 @@ function mouseClicked() {
      else if (mouseX <= 350 && mouseX >= 150 && mouseY <= 385 && mouseY >= 310) {
       soundclick.play();
       state = 3
-      noLoop()
+     
      }
       
     }
@@ -412,12 +421,12 @@ ghost6 = {
  id: 9,
 }
 currentTime = millis();
-timer1 = 5000 + currentTime;
-timer2 = 10000 + currentTime;
-timer3 = 15000 + currentTime;
-timer4 = 20000 + currentTime;
-timer5 = 25000 + currentTime;
-timer6 = 30000 + currentTime;
+timer1 = 3000 + currentTime;
+timer2 = 9000 + currentTime;
+timer3 = 12000 + currentTime;
+timer4 = 15000 + currentTime;
+timer5 = 18000 + currentTime;
+timer6 = 21000 + currentTime;
 }
 
 var levelnumber;
@@ -800,7 +809,7 @@ function gameEnded(){
  else if (lives === 0){
    state = 8;
    soundgameover.play();
-   setupLevel();
+ setupLevel();
    
  }
 }
@@ -809,7 +818,7 @@ function gameEndedarcade(){
   if (lives === 0){
    state = 8;
    soundgameover.play();
-   setupLevel();
+ setupLevel();
  
  }
 }
@@ -946,73 +955,43 @@ function ghostMove(movingGhost) {
 }
 
 
-//var timer1 = 5000;
-
-      function getRndInteger(min, max) {
-         if (millis() > timer1){
-           return Math.floor(Math.random() * (5) ) + 1;
-
-   
+function getRndInteger(min, max) {
+  if (millis() > timer1){
+    return Math.floor(Math.random() * 5) + 1;
   }
- 
 }
-//var timer2 = 10000;
+
 function getRndInteger2(min, max) {
-   if (millis() > timer2){
-           return Math.floor(Math.random() * (10) ) + 5;
-
-    
+  if (millis() > timer2){
+    return Math.floor(Math.random() * 10) + 5;
   }
- 
- 
 }
-//var timer3 = 15000;
+
 function getRndInteger3(min, max) {
-   if (millis() > timer3){
-       return Math.floor(Math.random() * (15) ) + 10;
-   
-    
-   }
- 
- 
+  if (millis() > timer3){
+    return Math.floor(Math.random() * 15) + 10;
+  }
 }
 
-//var timer4 = 20000;
 function getRndInteger4(min, max) {
-   if (millis() > timer4){
-       return Math.floor(Math.random() * (20) ) + 15;
-   
-    
-   
+  if (millis() > timer4){
+    return Math.floor(Math.random() * 20) + 15;
   }
- 
 }
 
-//var timer5 = 25000;
 function getRndInteger5(min, max) {
-   if (millis() > timer5){
-       return Math.floor(Math.random() * (25) ) + 20;
-   
-    
- 
+  if (millis() > timer5){
+    return Math.floor(Math.random() * 25) + 20;
   }
-
 }
 
-
-//var timer6 = 30000;
 function getRndInteger6(min, max) {
-   if (millis() > timer6){
-       return Math.floor(Math.random() * (30) ) + 25;
-   
-    
- 
+  if (millis() > timer6){
+    return Math.floor(Math.random() * (30) ) + 25;
   }
-
 }
 
-
- function ghostMovearcade() {
+function ghostMovearcade() {
  switch (getRndInteger()) {
    case 1:
      if (level[ghost.y][ghost.x-1] !== 1){
