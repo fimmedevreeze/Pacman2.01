@@ -222,7 +222,7 @@ var level = [
   [1,2,2,1,2,1,2,2,1,1,1,2,1,1,1,2,2,1,1,1,2,1,1,1,2,2,1,2,1,2,2,1],
   [1,2,2,2,2,2,2,2,2,1,2,0,0,0,0,2,2,0,0,0,0,2,1,2,2,2,2,2,2,2,2,1],
   [1,1,1,1,1,1,2,1,2,1,2,0,1,1,1,2,2,1,1,1,0,2,1,2,1,2,1,1,1,1,1,1],
-  [0,0,0,0,0,1,2,1,2,1,2,0,1,3,4,5,0,0,0,1,0,2,1,2,1,2,1,0,0,0,0,0],
+  [0,0,0,0,0,1,2,1,2,1,2,0,1,0,4,3,5,0,0,1,0,2,1,2,1,2,1,0,0,0,0,0],
   [1,1,1,1,1,1,2,1,2,1,2,0,1,1,1,1,1,1,1,1,0,2,1,2,1,2,1,1,1,1,1,1],
   [1,2,2,2,2,2,2,2,2,1,2,0,0,0,0,0,0,0,0,0,0,2,1,2,2,2,2,2,2,2,2,1],
   [1,2,2,1,2,1,2,2,1,1,1,2,1,1,1,2,2,1,1,1,2,1,1,1,2,2,1,2,1,2,2,1],
@@ -615,7 +615,7 @@ var ghost = {
 function ghostMove() {
  switch (getRndInteger()) {
    case 1:
-     if (level[ghost.y][ghost.x-1] !== 1){
+     if (level[ghost.y][ghost.x-1] !== 1&& 4 &&  5){
        if (level[ghost.y][ghost.x-1] === 2) {
         level[ghost.y][ghost.x] = 2;
         ghost.x = ghost.x - 1;
@@ -635,7 +635,7 @@ function ghostMove() {
      }
      break;
    case 2:
-   if (level[ghost.y][ghost.x+1] !== 1){
+   if (level[ghost.y][ghost.x+1] !== 1&& 4 &&  5){
      if (level[ghost.y][ghost.x+1] === 2) {        
         level[ghost.y][ghost.x] = 2;
         ghost.x = ghost.x + 1;
@@ -655,7 +655,7 @@ function ghostMove() {
      }
      break;
    case 3:    
-   if (level[ghost.y-1][ghost.x] !== 1){
+   if (level[ghost.y-1][ghost.x] !== 1&& 4 &&  5){
      if (level[ghost.y-1][ghost.x] === 2) {  
        level[ghost.y][ghost.x] = 2;   
        ghost.y = ghost.y - 1;
@@ -675,7 +675,7 @@ function ghostMove() {
      }
      break;
    case 4:
-   if (level[ghost.y+1][ghost.x] !== 1){
+   if (level[ghost.y+1][ghost.x] !== 1 && 4 &&  5){
      if (level[ghost.y+1][ghost.x] === 2) {
        level[ghost.y][ghost.x] = 2;     
        ghost.y = ghost.y + 1;
@@ -698,14 +698,14 @@ function ghostMove() {
  }
  
 var ghost2 ={
- x: 13,
+ x: 14,
  y:  9,
 }
  
 function ghost2Move() {
  switch (getRndInteger2()) {
    case 5:
-     if (level[ghost2.y][ghost2.x-1] !== 1){
+     if (level[ghost2.y][ghost2.x-1] !== 1&& 3 &&  5){
        if (level[ghost2.y][ghost2.x-1] === 2) {
         level[ghost2.y][ghost2.x] = 2;
         ghost2.x = ghost2.x - 1;
@@ -725,7 +725,7 @@ function ghost2Move() {
      }
      break;
    case 6:
-   if (level[ghost2.y][ghost2.x+1] !== 1){
+   if (level[ghost2.y][ghost2.x+1] !== 1&& 3 &&  5){
      if (level[ghost2.y][ghost2.x+1] === 2) {        
         level[ghost2.y][ghost2.x] = 2;
         ghost2.x = ghost2.x + 1;
@@ -745,7 +745,7 @@ function ghost2Move() {
      }
      break;
    case 7:    
-   if (level[ghost2.y-1][ghost2.x] !== 1){
+   if (level[ghost2.y-1][ghost2.x] !== 1&& 3 &&  5){
      if (level[ghost2.y-1][ghost2.x] === 2) {  
        level[ghost2.y][ghost2.x] = 2;   
        ghost2.y = ghost2.y - 1;
@@ -765,7 +765,7 @@ function ghost2Move() {
      }
      break;
    case 8:
-   if (level[ghost2.y+1][ghost2.x] !== 1){
+   if (level[ghost2.y+1][ghost2.x] !== 1 && 3 &&  5){
      if (level[ghost2.y+1][ghost2.x] === 2) {
        level[ghost2.y][ghost2.x] = 2;     
        ghost2.y = ghost2.y + 1;
@@ -781,21 +781,21 @@ function ghost2Move() {
         sounddeath.play();
        ghost2.y = ghost2.y
       }
-       drawWorld();
+        drawWorld();
      }
      break;
      }
  }
  
 var ghost3 ={
- x: 18,
+ x: 16,
  y:  9,
 }
  
 function ghost3Move() {
  switch (getRndInteger3()) {
    case 10:
-     if (level[ghost3.y][ghost3.x-1] !== 1){
+     if (level[ghost3.y][ghost3.x-1] !== 1 && 3 &&  4){
        if (level[ghost3.y][ghost3.x-1] === 2) {
         level[ghost3.y][ghost3.x] = 2;
         ghost3.x = ghost3.x - 1;
@@ -815,7 +815,7 @@ function ghost3Move() {
      }
      break;
    case 11:
-   if (level[ghost3.y][ghost3.x+1] !== 1){
+   if (level[ghost3.y][ghost3.x+1] !== 1 && 3 &&  4){
      if (level[ghost3.y][ghost3.x+1] === 2) {        
         level[ghost3.y][ghost3.x] = 2;
         ghost3.x = ghost3.x + 1;
@@ -835,7 +835,7 @@ function ghost3Move() {
      }
      break;
    case 12:    
-   if (level[ghost3.y-1][ghost3.x] !== 1){
+   if (level[ghost3.y-1][ghost3.x] !== 1 && 3 &&  4){
      if (level[ghost3.y-1][ghost3.x] === 2) {  
        level[ghost3.y][ghost3.x] = 2;   
        ghost3.y = ghost3.y - 1;
@@ -855,7 +855,7 @@ function ghost3Move() {
      }
      break;
    case 13:
-   if (level[ghost3.y+1][ghost3.x] !== 1){
+   if (level[ghost3.y+1][ghost3.x] !== 1 && 3 &&  4){
      if (level[ghost3.y+1][ghost3.x] === 2) {
        level[ghost3.y][ghost3.x] = 2;     
        ghost3.y = ghost3.y + 1;
