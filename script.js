@@ -12,6 +12,9 @@ let lives;
 let ghost;
 let ghost2;
 let ghost3;
+let ghost4;
+let ghost5;
+let ghost6;
 
 
 function preload(){
@@ -39,6 +42,10 @@ pinkright = loadImage("Images/pinkright.png");
 pinkleft = loadImage("Images/pinkleft.png");
 pinkup = loadImage("Images/pinkup.png");
 pinkdown = loadImage("Images/pinkdown.png");
+//orangeright = loadImage("Images/orangeright.png");
+//orangeleft = loadImage("Images/orangeleft.png");
+//orangeup = loadImage("Images/orangeup.png");
+//orangedown = loadImage("Images/orangedown.png");
 }
 
 function setup() {
@@ -119,13 +126,17 @@ function draw() {
     if (!songstart.isPlaying()) { 
       songstart.loop();
     }
-    drawWorld();
+    drawWorld2();
     gameEnded();
     levelnumber = 2;
-    
+   
     ghostMove(ghost);
     ghostMove(ghost2);
     ghostMove(ghost3);
+    ghostMove(ghost4);
+    ghostMove(ghost5);
+    ghostMove(ghost6);
+
 
 
     
@@ -145,22 +156,7 @@ function draw() {
     drawHighscore();
   }
 
-  // if (state == 7) {
-  //   songstart.stop();
-  //   background('black');
-  //   rectMode(CENTER);
-  //   fill('yellow');
-  //   rect(400, 50, 500, 50, 20);
-  //   fill('yellow');
-  //   rect(250, 350, 200, 75, 20);
-  //   textSize(50);
-  //   fill(0);
-  //   text('EINDE SPEL', 296, 68);
-  //   text('EXIT', 200, 365);
-  //   image(imgpacman, 450, 150, 250, 250)
-  // }
-
-  if (state == 8) {
+  if (state == 7) {
     songstart.stop();
     background('black');
     rectMode(CENTER);
@@ -170,8 +166,23 @@ function draw() {
     rect(250, 350, 200, 75, 20);
     textSize(50);
     fill(0);
-    text('GAME OVER', 296, 68);
+    text('EINDE SPEL', 296, 68);
     text('EXIT', 200, 365);
+    image(imgpacman, 450, 150, 250, 250)
+  }
+
+  if (state == 8) {
+    songstart.stop();
+    background('black');
+    rectMode(CENTER);
+    fill('yellow');
+    rect(400, 50, 500, 50, 20);
+    fill('yellow');
+    rect(250, 270, 350, 75, 20);
+    textSize(50);
+    fill(0);
+    text('GAME OVER', 296, 68);
+    text('PLAY AGAIN', 100, 285);
     image(imgpacman, 450, 150, 250, 250)
     drawScore();
     drawHighscore();
@@ -211,7 +222,7 @@ function mouseClicked() {
     }
   } 
   else if (state == 8) {
-     if (mouseX <= 350 && mouseX >= 150 && mouseY <= 385 && mouseY >= 310) {
+     if (mouseX <=350  && mouseX >= 150 && mouseY <= 270 && mouseY >= 195) {
       soundclick.play();
       state = 2     
   }
@@ -252,14 +263,74 @@ function drawWorld(){
                     
                  drawGhost3();
 
-          }        
+          }       
           else if(level[y][x] == 6){
               drawPacman();
            
+          }   
+          }   
+     }
+   drawScore();
+   drawLives();
+   levelNumber();
+  }
+  
+  function drawWorld2(){  
+  for(var y = 0; y < 19 ; y++){    
+      for(var x = 0; x < 32; x++){          
+          if (level[y][x] == 0){
+             
+          fill(0);
+          }
+          else if(level[y][x] == 1){
                
+                 image(wall, x * 25, y* 26, 25, 26); 
+                
+          }
+          else if(level[y][x] == 2){
+               
+                fill(255);
+                ellipseMode(CENTER);
+                ellipse(x * 25 +14 , y * 26 +14 , 8, 8);
+                
+          }
+          else if(level[y][x] == 3){
+               
+                drawGhost1();
+          }        
+          else if(level[y][x] == 4){
+               
+                 drawGhost2();
 
-          }            
+          }        
 
+          else if(level[y][x] == 5){
+                    
+                 drawGhost3();
+
+          }       
+          else if(level[y][x] == 6){
+              drawPacman();
+           
+          }   
+
+          else if(level[y][x] == 7){
+                    
+                 drawGhost4();
+
+          }    
+
+          else if(level[y][x] == 8){
+                    
+                 drawGhost5();
+
+          }    
+
+          else if(level[y][x] == 9){
+                    
+                 drawGhost6();
+
+          }    
           }   
      }
    drawScore();
@@ -280,7 +351,7 @@ function setupLevel() {
   [1,2,2,1,2,1,2,2,1,1,1,2,1,1,1,2,2,1,1,1,2,1,1,1,2,2,1,2,1,2,2,1],
   [1,2,2,2,2,2,2,2,2,1,2,0,0,0,0,2,2,0,0,0,0,2,1,2,2,2,2,2,2,2,2,1],
   [1,1,1,1,1,1,2,1,2,1,2,0,1,1,1,2,2,1,1,1,0,2,1,2,1,2,1,1,1,1,1,1],
-  [0,0,0,0,0,1,2,1,2,1,2,0,1,0,4,3,5,0,0,1,0,2,1,2,1,2,1,0,0,0,0,0],
+  [0,0,0,0,0,1,2,1,2,1,2,0,1,8,5,3,4,7,9,1,0,2,1,2,1,2,1,0,0,0,0,0],
   [1,1,1,1,1,1,2,1,2,1,2,0,1,1,1,1,1,1,1,1,0,2,1,2,1,2,1,1,1,1,1,1],
   [1,2,2,2,2,2,2,2,2,1,2,0,0,0,0,0,0,0,0,0,0,2,1,2,2,2,2,2,2,2,2,1],
   [1,2,2,1,2,1,2,2,1,1,1,2,1,1,1,2,2,1,1,1,2,1,1,1,2,2,1,2,1,2,2,1],
@@ -304,17 +375,42 @@ ghost = {
  id: 3,
 }
 ghost2 = {
- x: 14,
+ x: 16,
  y:  9,
  p: 0,
  id: 4,
 }
 ghost3 = {
- x: 16,
+ x: 14,
  y:  9,
  p: 0,
  id: 5,
 }
+ghost4 = {
+ x: 17,
+ y:  9,
+ p: 0,
+ id: 7,
+}
+ghost5 = {
+ x: 13,
+ y:  9,
+ p: 0,
+ id: 8,
+}
+ghost6 = {
+ x: 18,
+ y:  9,
+ p: 0,
+ id: 9,
+}
+currentTime = millis();
+timer1 = 5000 + currentTime;
+timer2 = 10000 + currentTime;
+timer3 = 15000 + currentTime;
+timer4 = 20000 + currentTime;
+timer5 = 25000 + currentTime;
+timer6 = 30000 + currentTime;
 }
 
 var levelnumber;
@@ -458,10 +554,67 @@ function drawGhost3(){
    break;
  }
 }
+function drawGhost4(){
+ switch(getRndInteger4()){
+   case 15:
+      image(redleft, ghost4.x * 25 +5 , ghost4.y * 26 +5 , 20, 20);
+   break;
+    case 16:
+         image(redright, ghost4.x * 25 +5 , ghost4.y * 26 +5 , 20, 20);
+   break;
+    case 17:
+       image(redup, ghost4.x * 25 +5 , ghost4.y * 26 +5 , 20, 20);
+   break;
+    case 18:
+      image(reddown, ghost4.x * 25 +5 , ghost4.y * 26 +5 , 20, 20);
+   break;
+   default:
+        image(redright, ghost4.x * 25 +5 , ghost4.y * 26 +5 , 20, 20);
+   break;
+ }
+}
+function drawGhost5(){
+ switch(getRndInteger5()){
+   case 20:
+      image(redleft, ghost5.x * 25 +5 , ghost5.y * 26 +5 , 20, 20);
+   break;
+    case 21:
+         image(redright, ghost5.x * 25 +5 , ghost5.y * 26 +5 , 20, 20);
+   break;
+    case 22:
+       image(redup, ghost5.x * 25 +5 , ghost5.y * 26 +5 , 20, 20);
+   break;
+    case 23:
+      image(reddown, ghost5.x * 25 +5 , ghost5.y * 26 +5 , 20, 20);
+   break;
+   default:
+        image(redright, ghost5.x * 25 +5 , ghost5.y * 26 +5 , 20, 20);
+   break;
+ }
+}
+function drawGhost6(){
+ switch(getRndInteger6()){
+   case 25:
+      image(redleft, ghost6.x * 25 +5 , ghost6.y * 26 +5 , 20, 20);
+   break;
+    case 26:
+         image(redright, ghost6.x * 25 +5 , ghost6.y * 26 +5 , 20, 20);
+   break;
+    case 27:
+       image(redup, ghost6.x * 25 +5 , ghost6.y * 26 +5 , 20, 20);
+   break;
+    case 28:
+      image(reddown, ghost6.x * 25 +5 , ghost6.y * 26 +5 , 20, 20);
+   break;
+   default:
+        image(redright, ghost6.x * 25 +5 , ghost6.y * 26 +5 , 20, 20);
+   break;
+ }
+}
  
 function keyPressed() {
    switch(keyCode) {
-    case 37:
+   case 37:
    case 65:
      if (level[pacman.y][pacman.x-1] !== 1){
        if (level[pacman.y][pacman.x-1] === 2) {
@@ -491,11 +644,15 @@ function keyPressed() {
         pacman.x = pacman.x - 1;
      level[pacman.y][pacman.x] = 6;
        }
-    
-     drawWorld();
+    if (levelnumber === 1){
+         drawWorld();
+      }
+     else if (levelnumber === 2){
+         drawWorld2();
+      }
      }
       break;
-    case 39:
+   case 39:
    case 68:    
    if (level[pacman.y][pacman.x+1] !== 1){
      if (level[pacman.y][pacman.x+1] === 2) {
@@ -525,12 +682,19 @@ function keyPressed() {
          pacman.x = pacman.x + 1;
      level[pacman.y][pacman.x] = 6;
        } 
- 	
+ 	   if (levelnumber === 1){
+         drawWorld();
+      }
+     else if (levelnumber === 2){
+         drawWorld2();
+      }
+  
+      
    
-     drawWorld();
+    
      }
       break;
-    case 38:
+   case 38:
    case 87:    
    if (level[pacman.y-1][pacman.x] !== 1){
      if (level[pacman.y-1][pacman.x] === 2) {
@@ -561,10 +725,15 @@ function keyPressed() {
       level[pacman.y][pacman.x] = 6;
        }
     
-     drawWorld();
+     if (levelnumber === 1){
+         drawWorld();
+      }
+     else if (levelnumber === 2){
+         drawWorld2();
+      }
      }
       break;
-    case 40:
+   case 40:
    case 83:    
    if (level[pacman.y+1][pacman.x] !== 1){
      if (level[pacman.y+1][pacman.x] === 2) {
@@ -600,20 +769,29 @@ function keyPressed() {
        }
   
      }
-    
+    if (levelnumber === 1){
+         drawWorld();
+      }
+     else if (levelnumber === 2){
+         drawWorld2();
+      }
       break;
      }
   }
+
  
 function gameEnded(){
  if (score === 1405){
     state = 7;
     setupLevel();
+
+
  }
  else if (lives === 0){
    state = 8;
    soundgameover.play();
    setupLevel();
+   
  }
 }
 function gameEndedarcade(){
@@ -622,6 +800,7 @@ function gameEndedarcade(){
    state = 8;
    soundgameover.play();
    setupLevel();
+ 
  }
 }
  
@@ -637,14 +816,26 @@ function ghostMove(movingGhost) {
    case 5:
      rndInteger = getRndInteger3();
      break;
+   case 7:
+     rndInteger = getRndInteger4();
+     break;
+   case 8:
+     rndInteger = getRndInteger5();
+     break;
+   case 9:
+     rndInteger = getRndInteger6();
+     break;
  }
 
  switch (rndInteger) {
+   case 15:
+   case 20:
+   case 25:
    case 10:
    case 5:
    case 1: {
      let destination = level[movingGhost.y][movingGhost.x-1];
-     if (destination !== 1 && destination !== 4 && destination !== 5) {
+     if (destination !== 1 && destination !== 4 && destination !== 5 && destination !== 7 && destination !== 8 && destination !== 9) {
       if (destination === 6) {
         lives = lives - 1;
         sounddeath.play();
@@ -654,15 +845,23 @@ function ghostMove(movingGhost) {
         movingGhost.x--;
         level[movingGhost.y][movingGhost.x] = movingGhost.id;
        }
-      drawWorld();
+      if (levelnumber === 1){
+         drawWorld();
+      }
+     else if (levelnumber === 2){
+         drawWorld2();
+      }
      }
      break;
    }
+   case 16:
+   case 21:
+   case 26:
    case 11:
    case 6:
    case 2: {
     let destination = level[movingGhost.y][movingGhost.x+1];
-    if (destination !== 1 && destination !== 4 && destination !== 5) {
+    if (destination !== 1 && destination !== 4 && destination !== 5 && destination !== 7 && destination !== 8 && destination !== 9) {
       if (destination === 6) {
         lives = lives - 1;
         sounddeath.play();
@@ -672,15 +871,23 @@ function ghostMove(movingGhost) {
         movingGhost.x++;
         level[movingGhost.y][movingGhost.x] = movingGhost.id;
        }
-      drawWorld();
+      if (levelnumber === 1){
+         drawWorld();
+      }
+     else if (levelnumber === 2){
+         drawWorld2();
+      }
      }
      break;
    }
+   case 17:
+   case 22:
+   case 27:
    case 12:
    case 7:
    case 3: {
     let destination = level[movingGhost.y-1][movingGhost.x];
-    if (destination !== 1 && destination !== 4 && destination !== 5) {
+    if (destination !== 1 && destination !== 4 && destination !== 5 && destination !== 7 && destination !== 8 && destination !== 9) {
       if (destination === 6) {
         lives = lives - 1;
         sounddeath.play();
@@ -690,15 +897,23 @@ function ghostMove(movingGhost) {
         movingGhost.y--;
         level[movingGhost.y][movingGhost.x] = movingGhost.id;
        }
-      drawWorld();
+      if (levelnumber === 1){
+         drawWorld();
+      }
+     else if (levelnumber === 2){
+         drawWorld2();
+      }
      }
      break;
    }
+   case 18:
+   case 23:
+   case 28:
    case 13:
    case 8:
    case 4: {
     let destination = level[movingGhost.y+1][movingGhost.x];
-    if (destination !== 1 && destination !== 4 && destination !== 5) {
+    if (destination !== 1 && destination !== 4 && destination !== 5 && destination !== 7 && destination !== 8 && destination !== 9) {
       if (destination === 6) {
         lives = lives - 1;
         sounddeath.play();
@@ -708,51 +923,86 @@ function ghostMove(movingGhost) {
         movingGhost.y++;
         level[movingGhost.y][movingGhost.x] = movingGhost.id;
        }
-      drawWorld();
+      if (levelnumber === 1){
+         drawWorld();
+      }
+     else if (levelnumber === 2){
+         drawWorld2();
+      }
      }
      break;
   }
  }
 }
- 
 
-var timer1 = 5000;
+
+//var timer1 = 5000;
 
       function getRndInteger(min, max) {
          if (millis() > timer1){
            return Math.floor(Math.random() * (5) ) + 1;
 
-     timer1 = timer1 + 5000;
+   
   }
  
 }
-var timer2 = 10000;
+//var timer2 = 10000;
 function getRndInteger2(min, max) {
    if (millis() > timer2){
            return Math.floor(Math.random() * (10) ) + 5;
 
-     timer2 = timer2 + 5000;
+    
   }
  
  
 }
-var timer3 = 15000;
+//var timer3 = 15000;
 function getRndInteger3(min, max) {
    if (millis() > timer3){
        return Math.floor(Math.random() * (15) ) + 10;
    
     
-     timer3 = timer3 + 5000;
-  }
+   }
  
  
 }
 
+//var timer4 = 20000;
+function getRndInteger4(min, max) {
+   if (millis() > timer4){
+       return Math.floor(Math.random() * (20) ) + 15;
+   
+    
+   
+  }
  
- 
-//de functie ghostMove(); vervolgens aanroepen in state 456
+}
 
-function ghostMovearcade() {
+//var timer5 = 25000;
+function getRndInteger5(min, max) {
+   if (millis() > timer5){
+       return Math.floor(Math.random() * (25) ) + 20;
+   
+    
+ 
+  }
+
+}
+
+
+//var timer6 = 30000;
+function getRndInteger6(min, max) {
+   if (millis() > timer6){
+       return Math.floor(Math.random() * (30) ) + 25;
+   
+    
+ 
+  }
+
+}
+
+
+ function ghostMovearcade() {
  switch (getRndInteger()) {
    case 1:
      if (level[ghost.y][ghost.x-1] !== 1){
