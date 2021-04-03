@@ -14,12 +14,24 @@ soundclick = loadSound('Sounds/credit.wav');
 soundeat = loadSound('Sounds/eat_fruit.wav');
 sounddeath = loadSound('Sounds/death_2.wav');
 soundgameover = loadSound('Sounds/death_1.wav');
-wall = loadImage("Images/maartenslogoo.png")
-pacmanright = loadImage("Images/pacmanright.png")
-pacmanleft = loadImage("Images/pacmanleft.png")
-pacmanup = loadImage("Images/pacmanup.png")
-pacmandown = loadImage("Images/pacmandown.png")
+wall = loadImage("Images/maartenslogoo.png");
+pacmanright = loadImage("Images/pacmanright.png");
+pacmanleft = loadImage("Images/pacmanleft.png");
+pacmanup = loadImage("Images/pacmanup.png");
+pacmandown = loadImage("Images/pacmandown.png");
 imgpacman = loadImage('Images/pacman_PNG87.png');
+redright = loadImage("Images/redright.png");
+redleft = loadImage("Images/redleft.png");
+redup = loadImage("Images/redup.png");
+reddown = loadImage("Images/reddown.png");
+blueright = loadImage("Images/blueright.png");
+blueleft = loadImage("Images/blueleft.png");
+blueup = loadImage("Images/blueup.png");
+bluedown = loadImage("Images/bluedown.png");
+pinkright = loadImage("Images/pinkright.png");
+pinkleft = loadImage("Images/pinkleft.png");
+pinkup = loadImage("Images/pinkup.png");
+pinkdown = loadImage("Images/pinkdown.png");
 }
 
 function setup() {
@@ -371,39 +383,63 @@ function drawPacman(){
 
  
 function drawGhost1(){
- for(var y = 0; y < 19 ; y++){   
-     for(var x = 0; x < 32; x++){         
-        if (level[y][x] == 3){
-        fill('blue')
-               ellipse(x * 25 +14 , y * 26 +14 , 20, 20);
-     }
-  
+ switch(getRndInteger()){
+   case 1:
+      image(redleft, ghost.x * 25 +5 , ghost.y * 26 +5 , 20, 20);
+   break;
+    case 2:
+         image(redright, ghost.x * 25 +5 , ghost.y * 26 +5 , 20, 20);
+   break;
+    case 3:
+       image(redup, ghost.x * 25 +5 , ghost.y * 26 +5 , 20, 20);
+   break;
+    case 4:
+      image(reddown, ghost.x * 25 +5 , ghost.y * 26 +5 , 20, 20);
+   break;
+   default:
+        image(redright, ghost.x * 25 +5 , ghost.y * 26 +5 , 20, 20);
+   break;
  }
-}
 }
  
 function drawGhost2(){
- for(var y = 0; y < 19 ; y++){   
-     for(var x = 0; x < 32; x++){         
-        if (level[y][x] == 4){
-        fill('orange')
-               ellipse(x * 25 +14 , y * 26 +14 , 20, 20);
-     }
-  
+ switch(getRndInteger2()){
+   case 5:
+      image(blueleft, ghost2.x * 25 +5 , ghost2.y * 26 +5 , 20, 20);
+   break;
+    case 6:
+         image(blueright, ghost2.x * 25 +5 , ghost2.y * 26 +5 , 20, 20);
+   break;
+    case 7:
+       image(blueup, ghost2.x * 25 +5 , ghost2.y * 26 +5 , 20, 20);
+   break;
+    case 8:
+      image(bluedown, ghost2.x * 25 +5 , ghost2.y * 26 +5 , 20, 20);
+   break;
+   default:
+        image(blueright, ghost2.x * 25 +5 , ghost2.y * 26 +5 , 20, 20);
+   break;
  }
-}
 }
  
 function drawGhost3(){
- for(var y = 0; y < 19 ; y++){   
-     for(var x = 0; x < 32; x++){         
-        if (level[y][x] == 5){
-       fill('red')
-              ellipse(x * 25 +14 , y * 26 +14 , 20, 20);
-     }
-  
+ switch(getRndInteger3()){
+   case 10:
+      image(pinkleft, ghost3.x * 25 +5 , ghost3.y * 26 +5 , 20, 20);
+   break;
+    case 11:
+         image(pinkright, ghost3.x * 25 +5 , ghost3.y * 26 +5 , 20, 20);
+   break;
+    case 12:
+       image(pinkup, ghost3.x * 25 +5 , ghost3.y * 26 +5 , 20, 20);
+   break;
+    case 13:
+      image(pinkdown, ghost3.x * 25 +5 , ghost3.y * 26 +5 , 20, 20);
+   break;
+   default:
+        image(pinkright, ghost3.x * 25 +5 , ghost3.y * 26 +5 , 20, 20);
+   break;
  }
-}
 }
  
 function keyPressed() {
@@ -555,11 +591,15 @@ function keyPressed() {
 function gameEnded(){
  if (score === 1405){
     state = 7;
+    score= 0;
+    lives= 3;
   
  }
  else if (lives === 0){
    state = 8;
    soundgameover.play();
+    score= 0;
+    lives= 3;
  }
 }
 function gameEndedarcade(){
@@ -567,6 +607,8 @@ function gameEndedarcade(){
   if (lives === 0){
    state = 8;
    soundgameover.play();
+   score= 0;
+    lives= 3;
  }
 }
  
