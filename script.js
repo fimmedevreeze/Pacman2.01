@@ -330,6 +330,7 @@ function drawScore(){
 }
 
 function drawHighscore(){
+  if (state == 6){ 
   if (score > highscore) {
    localStorage.setItem('game1HighScore', score);
    highscore = score
@@ -337,8 +338,9 @@ function drawHighscore(){
    noStroke();
    fill(255);
    textSize(30);
-   textAlign(LEFT);
-    }
+   textAlign(LEFT)
+   }
+    
   else {
    highscore = localStorage.getItem("game1HighScore")
    text("Arcade Highscore" + " " + highscore, 200, height - 5);
@@ -347,6 +349,7 @@ function drawHighscore(){
    textSize(30);
    textAlign(LEFT);
     }
+  }
 }
 
 
