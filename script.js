@@ -7,7 +7,7 @@ let song;
 
 let level;
 let pacman;
-let score;
+let score = 0;
 let lives;
 let ghost, ghost2, ghost3;
 
