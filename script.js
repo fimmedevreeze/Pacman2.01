@@ -5,6 +5,7 @@ let left, right, up, down;
 let img;
 let song;
 
+
 function preload(){
 songstart = loadSound('Sounds/game_start.wav');
 soundbye = loadSound('Sounds/game_end.wav');
@@ -582,7 +583,7 @@ function gameEnded(){
     state = 7;
     score= 0;
     lives= 3;
-  
+       
  }
  else if (lives === 0){
    state = 8;
@@ -603,7 +604,7 @@ function gameEndedarcade(){
  
 var ghost = {
  x: 15,
- y:  7,
+ y:  9,
 }
  
 function ghostMove() {
@@ -692,8 +693,8 @@ function ghostMove() {
  }
  
 var ghost2 ={
- x: 14,
- y:  7,
+ x: 13,
+ y:  9,
 }
  
 function ghost2Move() {
@@ -782,8 +783,8 @@ function ghost2Move() {
  }
  
 var ghost3 ={
- x: 15,
- y:  7,
+ x: 18,
+ y:  9,
 }
  
 function ghost3Move() {
@@ -871,16 +872,39 @@ function ghost3Move() {
      }
  }
  
-function getRndInteger(min, max) {
- return Math.floor(Math.random() * (5) ) + 1;
-}
+
+var timer1 = 5000;
+
+      function getRndInteger(min, max) {
+         if (millis() > timer1){
+           return Math.floor(Math.random() * (5) ) + 1;
+
+     timer1 = timer1 + 5000;
+  }
  
+}
+var timer2 = 10000;
 function getRndInteger2(min, max) {
- return Math.floor(Math.random() * (10) ) + 5;
+   if (millis() > timer2){
+           return Math.floor(Math.random() * (10) ) + 5;
+
+     timer2 = timer2 + 5000;
+  }
+ 
+ 
 }
+var timer3 = 15000;
 function getRndInteger3(min, max) {
- return Math.floor(Math.random() * (15) ) + 10;
+   if (millis() > timer3){
+       return Math.floor(Math.random() * (15) ) + 10;
+   
+    
+     timer3 = timer3 + 5000;
+  }
+ 
+ 
 }
+
  
  
 //de functie ghostMove(); vervolgens aanroepen in state 456
