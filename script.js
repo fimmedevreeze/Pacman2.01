@@ -135,6 +135,7 @@ function draw() {
     ghostMovearcade();
      ghost2Movearcade();
       ghost3Movearcade();
+    drawHighscore();
   }
 
   // if (state == 7) {
@@ -281,7 +282,6 @@ function drawWorld(){
           }   
      }
    drawScore();
-   drawHighscore();
    drawLives();
    levelNumber();
   }
@@ -311,7 +311,7 @@ function drawHighscore(){
   if (score > highscore) {
    localStorage.setItem('game1HighScore', score);
    highscore = score
-   text("Highscore" + " " + highscore, 200, height - 5);
+   text("Arcade Highscore" + " " + highscore, 200, height - 5);
    noStroke();
    fill(255);
    textSize(30);
@@ -319,7 +319,7 @@ function drawHighscore(){
     }
   else {
    highscore = localStorage.getItem("game1HighScore")
-   text("Highscore" + " " + highscore, 200, height - 5);
+   text("Arcade Highscore" + " " + highscore, 200, height - 5);
    noStroke();
    fill(255);
    textSize(30);
