@@ -42,10 +42,19 @@ pinkright = loadImage("Images/pinkright.png");
 pinkleft = loadImage("Images/pinkleft.png");
 pinkup = loadImage("Images/pinkup.png");
 pinkdown = loadImage("Images/pinkdown.png");
-//orangeright = loadImage("Images/orangeright.png");
-//orangeleft = loadImage("Images/orangeleft.png");
-//orangeup = loadImage("Images/orangeup.png");
-//orangedown = loadImage("Images/orangedown.png");
+orangeright = loadImage("Images/orangeright.jpg");
+orangeleft = loadImage("Images/orangeleft.jpg");
+orangeup = loadImage("Images/orangeup.jpg");
+orangedown = loadImage("Images/orangedown.jpg");
+greyright = loadImage("Images/greyright.png");
+greyleft = loadImage("Images/greyleft.png");
+greyup = loadImage("Images/greyup.png");
+greydown = loadImage("Images/greydown.png");
+
+purpleright = loadImage("Images/purpleright.png");
+purpleleft = loadImage("Images/purpleleft.png");
+purpleup = loadImage("Images/purpleup.png");
+purpledown = loadImage("Images/purpledown.png");
 }
 
 function setup() {
@@ -76,19 +85,19 @@ function draw() {
   if (state == 2) {
     background('black');
     fill('yellow')
-    text('LEVELS', 308, 70)
+    text('LEVELS', 345, 80)
     fill('yellow');
     rect(400, 160, 200, 75, 20);
     fill('black')
-    text('Level 1', 325, 177)
+    text('Level 1', 350, 170)
     fill('yellow');
     rect(400, 270, 200, 75, 20);
     fill('black')
-    text('Level 2', 325, 287)
+    text('Level 2', 350, 280)
     fill('yellow');
     rect(400, 380, 200, 75, 20);
     fill('black')
-    text('ARCADE', 325, 397)
+    text('ARCADE', 340, 390)
     songstart.stop();
     drawScore();
     drawHighscore();
@@ -100,7 +109,7 @@ function draw() {
   if (state == 3) {
     background("black")
     fill(255, 0, 0)
-    text('SEE YOU NEXT TIME!', 140, 250)
+    text('SEE YOU NEXT TIME!', 250, 250)
     songstart.stop();
     soundbye.play();
   }
@@ -181,7 +190,7 @@ function draw() {
     rect(250, 270, 350, 75, 20);
     textSize(50);
     fill(0);
-    text('GAME OVER', 296, 68);
+    text('GAME OVER', 250, 68);
     text('PLAY AGAIN', 100, 285);
     image(imgpacman, 450, 150, 250, 250)
     drawScore();
@@ -222,7 +231,7 @@ function mouseClicked() {
     }
   } 
   else if (state == 8) {
-     if (mouseX <=350  && mouseX >= 150 && mouseY <= 270 && mouseY >= 195) {
+     if (mouseX <=430  && mouseX >= 80 && mouseY <= 290 && mouseY >= 80) {
       soundclick.play();
       state = 2     
   }
@@ -243,11 +252,9 @@ function drawWorld(){
                 
           }
           else if(level[y][x] == 2){
-               
-                fill(255);
+               fill(255);
                 ellipseMode(CENTER);
                 ellipse(x * 25 +14 , y * 26 +14 , 8, 8);
-                
           }
           else if(level[y][x] == 3){
                
@@ -289,7 +296,7 @@ function drawWorld(){
           }
           else if(level[y][x] == 2){
                
-                fill(255);
+               fill(255);
                 ellipseMode(CENTER);
                 ellipse(x * 25 +14 , y * 26 +14 , 8, 8);
                 
@@ -439,7 +446,7 @@ function drawHighscore(){
     
   else {
    highscore = localStorage.getItem("game1HighScore")
-   text("Arcade Highscore" + " " + highscore, 200, height - 5);
+   text("Arcade Highscore" + " " + highscore, 160, height - 5);
    noStroke();
    fill(255);
    textSize(30);
@@ -460,9 +467,9 @@ function drawLives(){
 function levelNumber(){
    noStroke();
    fill(255);
-   textSize(30);
+   textSize(28);
    textAlign(LEFT);
-   text("Level" + " " + levelnumber , 500, height - 5);
+   text("Level" + " " + levelnumber , 480, height - 5);
 
 }
 
@@ -560,57 +567,57 @@ function drawGhost3(){
 function drawGhost4(){
  switch(getRndInteger4()){
    case 15:
-      image(redleft, ghost4.x * 25 +5 , ghost4.y * 26 +5 , 20, 20);
+      image(orangeleft, ghost4.x * 25 +5 , ghost4.y * 26 +5 , 20, 20);
    break;
     case 16:
-         image(redright, ghost4.x * 25 +5 , ghost4.y * 26 +5 , 20, 20);
+         image(orangeright, ghost4.x * 25 +5 , ghost4.y * 26 +5 , 20, 20);
    break;
     case 17:
-       image(redup, ghost4.x * 25 +5 , ghost4.y * 26 +5 , 20, 20);
+       image(orangeup, ghost4.x * 25 +5 , ghost4.y * 26 +5 , 20, 20);
    break;
     case 18:
-      image(reddown, ghost4.x * 25 +5 , ghost4.y * 26 +5 , 20, 20);
+      image(orangedown, ghost4.x * 25 +5 , ghost4.y * 26 +5 , 20, 20);
    break;
    default:
-        image(redright, ghost4.x * 25 +5 , ghost4.y * 26 +5 , 20, 20);
+        image(orangeright, ghost4.x * 25 +5 , ghost4.y * 26 +5 , 20, 20);
    break;
  }
 }
 function drawGhost5(){
  switch(getRndInteger5()){
    case 20:
-      image(redleft, ghost5.x * 25 +5 , ghost5.y * 26 +5 , 20, 20);
+      image(greyleft, ghost5.x * 25 +5 , ghost5.y * 26 +5 , 20, 20);
    break;
     case 21:
-         image(redright, ghost5.x * 25 +5 , ghost5.y * 26 +5 , 20, 20);
+         image(greyright, ghost5.x * 25 +5 , ghost5.y * 26 +5 , 20, 20);
    break;
     case 22:
-       image(redup, ghost5.x * 25 +5 , ghost5.y * 26 +5 , 20, 20);
+       image(greyup, ghost5.x * 25 +5 , ghost5.y * 26 +5 , 20, 20);
    break;
     case 23:
-      image(reddown, ghost5.x * 25 +5 , ghost5.y * 26 +5 , 20, 20);
+      image(greydown, ghost5.x * 25 +5 , ghost5.y * 26 +5 , 20, 20);
    break;
    default:
-        image(redright, ghost5.x * 25 +5 , ghost5.y * 26 +5 , 20, 20);
+        image(greyright, ghost5.x * 25 +5 , ghost5.y * 26 +5 , 20, 20);
    break;
  }
 }
 function drawGhost6(){
  switch(getRndInteger6()){
    case 25:
-      image(redleft, ghost6.x * 25 +5 , ghost6.y * 26 +5 , 20, 20);
+      image(purpleleft, ghost6.x * 25 +5 , ghost6.y * 26 +5 , 20, 20);
    break;
     case 26:
-         image(redright, ghost6.x * 25 +5 , ghost6.y * 26 +5 , 20, 20);
+         image(purpleright, ghost6.x * 25 +5 , ghost6.y * 26 +5 , 20, 20);
    break;
     case 27:
-       image(redup, ghost6.x * 25 +5 , ghost6.y * 26 +5 , 20, 20);
+       image(purpleup, ghost6.x * 25 +5 , ghost6.y * 26 +5 , 20, 20);
    break;
     case 28:
-      image(reddown, ghost6.x * 25 +5 , ghost6.y * 26 +5 , 20, 20);
+      image(purpledown, ghost6.x * 25 +5 , ghost6.y * 26 +5 , 20, 20);
    break;
    default:
-        image(redright, ghost6.x * 25 +5 , ghost6.y * 26 +5 , 20, 20);
+        image(purpleright, ghost6.x * 25 +5 , ghost6.y * 26 +5 , 20, 20);
    break;
  }
 }
