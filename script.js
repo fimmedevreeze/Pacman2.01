@@ -55,6 +55,8 @@ function draw() {
     text('START', 175, 215);
     text('EXIT', 200, 365);
     image(imgpacman, 450, 150, 250, 250)
+    drawScore();
+    drawHighscore();
   }
   
   if (state == 2) {
@@ -74,6 +76,8 @@ function draw() {
     fill('black')
     text('ARCADE', 325, 397)
     songstart.stop();
+    drawScore();
+    drawHighscore();
     if (mouseButton == RIGHT) {
       state = 1
     }
@@ -161,6 +165,7 @@ function draw() {
     text('GAME OVER', 296, 68);
     text('EXIT', 200, 365);
     image(imgpacman, 450, 150, 250, 250)
+    drawScore();
     drawHighscore();
   }
    
