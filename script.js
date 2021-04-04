@@ -420,13 +420,14 @@ ghost6 = {
  p: 0,
  id: 9,
 }
+
 currentTime = millis();
-timer1 = 3000 + currentTime;
-timer2 = 9000 + currentTime;
-timer3 = 12000 + currentTime;
-timer4 = 15000 + currentTime;
-timer5 = 18000 + currentTime;
-timer6 = 21000 + currentTime;
+timer1 = 2000 + currentTime;
+timer2 = 4000 + currentTime;
+timer3 = 6000 + currentTime;
+timer4 = 8000 + currentTime;
+timer5 = 10000 + currentTime;
+timer6 = 12000 + currentTime;
 }
 
 var levelnumber;
