@@ -112,9 +112,8 @@ function draw() {
     text('SEE YOU NEXT TIME!', 250, 250)
     songstart.stop();
     soundbye.play();
-    if (mouseButton == RIGHT) {
-      state = 1
-    }
+   
+    
   }
 
   if (state == 4) {
@@ -220,7 +219,7 @@ function mouseClicked() {
      else if (mouseX <= 350 && mouseX >= 150 && mouseY <= 385 && mouseY >= 310) {
       soundclick.play();
       state = 3
-     
+      noLoop();
      }
       
     }
